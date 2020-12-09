@@ -11,10 +11,10 @@ pt-BR:
     error_notification:
       default_message: "Alguns erros foram encontrados, por favor verifique:"
     # Labels and hints examples
-    labels:
-      password: 'Senha'
-      user: 'Usuário'
-        new: 'Novo'
+    # labels:
+    #   password: 'Password'
+    #   user:
+    #     new:
     #       email: 'E-mail para efetuar o sign in.'
     #     edit:
     #       email: 'E-mail.'
