@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-cptec">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "https://freepikpsd.com/wp-content/uploads/2019/10/court-Png-Transparent-Images.png" %>
     <% end %>
 
@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Página principal", "#", class: "nav-link" %>
+          <%= link_to "Página principal", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Mensagens", "#", class: "nav-link" %>
