@@ -10,7 +10,7 @@ class ExpertsController < ApplicationController
       flash[:notice] = "Operação realizada com sucesso"
       redirect_to @expert
     else
-      flash[:alert] = @expert.errors.message.join('<br>')
+      flash[:alert] = @expert.errors.messages.join('<br>').html_safe
       render 'edit'
     end
   end

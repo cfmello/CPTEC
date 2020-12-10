@@ -12,6 +12,7 @@
     </tr>
   </thead>
   <tbody>
+    <%= render 'fields/form' %>
     <% @expert.fields.each do |field| %>
       <tr>
         <th><%= field.area %></th>
@@ -20,18 +21,5 @@
         <td><i class="far fa-edit"></i> <i class="far fa-trash-alt"></i></td>
       </tr>
     <% end %>
-  
-    <tr>
-      <%= simple_form_for [@expert, @field] do |f| %>
-        <th><%= f.input :area, label:false  %></th>
-        <td><%= f.input :title, label:false %></td>
-        <td><%= f.input :reg_number, label:false %></td>
-        <td>
-          <%= f.button :button, class: 'btn btn-primary' do %>
-            <i class="fas fa-plus"></i>
-          <% end %>
-        </td>
-      <% end %>
-    </tr>
   </tbody>
 </table>
