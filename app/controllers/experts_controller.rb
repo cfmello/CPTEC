@@ -1,6 +1,7 @@
 class ExpertsController < ApplicationController
   def edit
     @expert = Expert.find(params[:id])
+    @field = Field.new
   end
 
   def update

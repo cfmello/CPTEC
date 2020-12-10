@@ -1,3 +1,37 @@
 <h1>Seu perfil</h1>
 <h3><%= current_user.full_name %></h3>
 <%= render 'form' %>
+<h2>Suas especialidades</h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Área</th>
+      <th scope="col">Especialidade</th>
+      <th scope="col">Registro Conselho</th>
+      <th scope="col"><i class="fas fa-sliders-h"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expert.fields.each do |field| %>
+      <tr>
+        <th><%= field.area %></th>
+        <td><%= field.title %></td>
+        <td><%= field.reg_number %></td>
+        <td><i class="far fa-edit"></i> <i class="far fa-trash-alt"></i></td>
+      </tr>
+    <% end %>
+  
+    <tr>
+      <%= simple_form_for [@expert, @field] do |f| %>
+        <th><%= f.input :area, label:false  %></th>
+        <td><%= f.input :title, label:false %></td>
+        <td><%= f.input :reg_number, label:false %></td>
+        <td>
+          <%= f.button :button, class: 'btn btn-primary' do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
