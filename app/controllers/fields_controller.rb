@@ -11,6 +11,17 @@ class FieldsController < ApplicationController
     redirect_to edit_expert_path(@expert)
   end
 
+  def destroy
+    @field = Field.find(params[:id])
+    if @field.destroy
+      flash[:notice] = 'Especialidade removida'
+    else
+      flash[:alert] = @field.errors.messages.values.join('<br>')
+    end
+    redirect_to edit_expert_path(@field.expert)
+  end
+  
+
   private
 
   def field_params
