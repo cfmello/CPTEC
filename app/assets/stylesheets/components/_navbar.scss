@@ -1,12 +1,15 @@
-.navbar-lewagon {
+.navbar-cptec {
   justify-content: space-between;
-  background: white;
+  background: rgb(223, 236, 173);
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  font-stretch: semi-condensed;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-cptec .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-cptec .navbar-brand img {
   width: 40px;
 }

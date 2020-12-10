@@ -1,0 +1,35 @@
+<h1>Seu perfil</h1>
+<h3><%= current_user.full_name %></h3>
+<%= render 'form' %>
+<div class="container">
+  <h2>Suas especialidades</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Área</th>
+        <th scope="col">Especialidade</th>
+        <th scope="col">Registro Conselho</th>
+        <th scope="col"><i class="fas fa-sliders-h"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render 'fields/form' %>
+      <% @expert.fields.each do |field| %>
+        <tr>
+          <td><%= field.area %></td>
+          <td><%= field.title %></td>
+          <td><%= field.reg_number %></td>
+          <td>
+            <i class="far fa-edit"></i>
+            <%= button_to field_path(field),
+                method: :delete,
+                data: { confirm: 'Esta especialidade será removida do seu cadastro' },
+                class: 'btn btn-warning' do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
