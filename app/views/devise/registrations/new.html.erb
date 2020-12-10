@@ -16,28 +16,44 @@
                 required: true,
                 collection: ['Auxiliar externo', 'Magistrado', 'Servidor'],
                 label: "Qual o seu perfil?" %>
-    <%= f.simple_fields_for :experts do |o| %>
-      <%= o.input :phone_number,
-                  required: true,
-                  label: "Telefone",
-                  input_html: { autocomplete: "telefone"} %>
-      <%= o.input :city,
-                  required: true,
-                  label: "Cidade",
-                  input_html: { autocomplete: "cidade"} %>
-      <%= o.input :doc_number,
-                  required: true,
-                  label: "Numero da identidade do orgão de classe",
-                  input_html: { autocomplete: "cidade"} %>
-      <%= o.input :distance,
-                  required: true,
-                  label: "Distância máxima de deslocamento",
-                  input_html: { autocomplete: "cidade"} %>
-      <%= o.input :curriculum,
-                  required: true,
-                  label: "Link para o currículo na plataforma Lattes",
-                  input_html: { autocomplete: "cidade"} %>
-    <% end %>
+    <%# FORMULARIO DE EXPERTS %>
+    <fieldset id="form_experts" class="hide">
+      <%= f.simple_fields_for :experts do |o| %>
+        <%= o.input :phone_number,
+                    required: true,
+                    label: "Telefone",
+                    input_html: { autocomplete: "telefone" } %>
+        <%= o.input :city,
+                    required: true,
+                    label: "Cidade",
+                    input_html: { autocomplete: "cidade"} %>
+        <%= o.input :doc_number,
+                    required: true,
+                    label: "CPF ou CNPJ",
+                    input_html: { autocomplete: "cidade"} %>
+        <%= o.input :distance,
+                    required: true,
+                    label: "Distância máxima de deslocamento",
+                    input_html: { autocomplete: "cidade"} %>
+        <%= o.input :curriculum,
+                    required: true,
+                    label: "Link para o currículo na plataforma Lattes",
+                    input_html: { autocomplete: "cidade"} %>
+      <% end %>
+    </fieldset>
+    <%# FORMULARIO DE SERVANTS %>
+    <fieldset id="form_servants" class="hide">
+      <%= f.simple_fields_for :servants do |s| %>
+        <%= s.input :court,
+                    required: true,
+                    label: "Lotação",
+                    input_html: { autocomplete: "lotação" } %>
+        <%= s.input :city,
+                    required: true,
+                    label: "Cidade",
+                    input_html: { autocomplete: "cidade"} %>
+      <% end %>
+    </fieldset>
     <%= f.input :password,
                 required: true,
                 hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
