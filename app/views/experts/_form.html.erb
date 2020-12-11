@@ -2,18 +2,18 @@
   <%= f.input :doc_number, label: 'CPF ou CNPJ', placeholder: 'CPF ou CNPJ',
       disabled: true %>
   <%= f.input :phone_number, label: 'Telefone de contato', placeholder: 'Telefone para contato',
-      disabled: !current_page?(edit_expert_path) %>
+      disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :city, label: 'Endereço', placeholder: 'Endereço',
-      disabled: !current_page?(edit_expert_path) %>
+      disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :distance, label: 'Raio de atuação (km)', placeholder: '100',
       input_html: { value: 100, min: 0, max: 500, step: 10 },
-      disabled: !current_page?(edit_expert_path) %>
+      disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :curriculum, label: 'Currículo Lattes', placeholder: 'http://lattes.cnpq.br/123',
-      disabled: !current_page?(edit_expert_path) %>
+      disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :accept, label: false, placeholder: 'Escolha uma opção',
       collection: { 'Justiça Gratuita' => 0, 'Perícia Particular' => 1,'Ambos' => 2 },
-      disabled: !current_page?(edit_expert_path) %>
+      disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.button :button, class: 'btn btn-primary' do %>
     <i class="far fa-save"></i> Atualizar
-  <% end if current_page?(edit_expert_path) %>
+  <% end if current_page?(edit_expert_path(@expert)) %>
 <% end %>

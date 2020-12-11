@@ -15,12 +15,19 @@
     <tbody>
       <%= render 'fields/form' %>
       <% @expert.fields.each do |field| %>
-        <tr>
+        <tr id="field-<%= field.id %>">
           <td><%= field.area %></td>
           <td><%= field.title %></td>
           <td><%= field.reg_number %></td>
           <td>
-            <i class="far fa-edit"></i>
+            <%= button_tag '#',
+                data: {
+                    toggle: "modal",
+                    target: "#field#{ field.id }Modal"
+                  },
+                class: 'btn btn-secondary' do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
             <%= button_to field_path(field),
                 method: :delete,
                 data: { confirm: 'Esta especialidade será removida do seu cadastro' },
@@ -33,3 +40,22 @@
     </tbody>
   </table>
 </div>
+
+<% @expert.fields.each do |field| %>
+  <div class="modal fade" id="<%= "field#{ field.id }Modal"%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Especialidade</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'fields/form_labeled', expert: @expert, field: field %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+  
