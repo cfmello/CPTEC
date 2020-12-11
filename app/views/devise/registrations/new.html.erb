@@ -4,17 +4,75 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email,
+    <%= f.input :full_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "E-mail" }%>
+                label: "Nome completo",
+                input_html: { autocomplete: "Nome" }%>
+    <%= f.input :email,
+                required: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :profile,
+                required: true,
+                collection: [['1', 'Auxiliar externo'], ['2', 'Magistrado'], ['3', 'Servidor']],
+                label_method: :second,
+                value_method: :first,
+                label: "Qual o seu perfil?" %>
+    <%# FORMULARIO DE EXPERTS %>
+    <fieldset id="form_experts" class="hide">
+      <%= f.simple_fields_for :experts do |o| %>
+        <%= o.input :phone_number,
+                    required: true,
+                    label: "Telefone",
+                    input_html: { autocomplete: "telefone" } %>
+        <%= o.input :city,
+                    required: true,
+                    label: "Cidade",
+                    input_html: { autocomplete: "cidade"} %>
+        <%= o.input :doc_number,
+                    required: true,
+                    label: "CPF ou CNPJ",
+                    input_html: { autocomplete: "cpf", autocomplete: "cnpj"} %>
+        <%= o.input :accept,
+                    required: true,
+                    collection: [['0', 'Apenas perícias particulares'], ['1', 'Justiça gratuita'], ['2', 'Ambos']],
+                    label_method: :second,
+                    value_method: :first,
+                    label: "Que tipo de serviço aceita?"
+                    %>
+        <%= o.input :distance,
+                    required: true,
+                    as: :integer,
+                    label: "Distância máxima de deslocamento (em quilômetros)",
+                    input_html: { autocomplete: "distancia", min: '0', max: '500', step: '10'} %>
+        <%= o.input :curriculum,
+                    required: true,
+                    label: "Link para o currículo na plataforma Lattes",
+                    input_html: { autocomplete: "url", placeholder: 'http://lattes.cnpq.br/123456789'} %>
+      <% end %>
+    </fieldset>
+    <%# FORMULARIO DE SERVANTS %>
+    <fieldset id="form_servants" class="hide">
+      <%= f.simple_fields_for :servants do |s| %>
+        <%= s.input :court,
+                    required: true,
+                    label: "Lotação",
+                    input_html: { autocomplete: "lotação" } %>
+        <%= s.input :city,
+                    required: true,
+                    label: "Cidade",
+                    input_html: { autocomplete: "cidade"} %>
+      <% end %>
+    </fieldset>
     <%= f.input :password,
                 required: true,
-                hint: ("#{@minimum_password_length} caracteres no mínimo" if @minimum_password_length),
-                input_html: { autocomplete: "Nova senha" } %>
+                hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
+                label: "Senha",
+                input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "Nova senha" } %>
+                label: "Confirme a senha",
+                input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
