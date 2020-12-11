@@ -4,7 +4,7 @@ const registerUser = () => {
   const servantForm = document.getElementById("form_servants");
   user.addEventListener("change", e => {
     if (e.currentTarget.value !== "") {
-      if (e.currentTarget.value === "Auxiliar externo") {
+      if (e.currentTarget.value === "1") {
         expertForm.classList.remove("hide");
         servantForm.classList.add("hide");
       }
@@ -12,6 +12,10 @@ const registerUser = () => {
         servantForm.classList.remove("hide");
         expertForm.classList.add("hide");
       }
+    }
+    else {
+      servantForm.classList.add("hide");
+      expertForm.classList.add("hide");
     }
   });
 };
