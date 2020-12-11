@@ -1,3 +1,4 @@
+<br>
 <h2>Entre em sua conta</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,7 +16,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Entrar", class: "btn btn-light" %>
+    <%= f.button :submit, "Entrar", class: "btn btn-light", style: "min-width: 120px" %>
   </div>
 <% end %>
 
