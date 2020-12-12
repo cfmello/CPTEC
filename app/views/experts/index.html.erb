@@ -3,7 +3,7 @@
 <%= form_tag experts_path, class: 'form-inline', method: :get do |f| %>
   <%= text_field_tag :city, params[:city], class: 'form-control', placeholder: 'Cidade' %>
   <%= text_field_tag :practitioner, params[:practitioner], class: 'form-control', placeholder: 'Area e Especialidade' %>
-  <%= submit_tag :button, class: 'btn btn-primary' do %>
+  <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe, class: 'btn btn-primary' do %>
     <i class="fas fa-search"></i> Buscar
   <% end %>
 <% end %>
