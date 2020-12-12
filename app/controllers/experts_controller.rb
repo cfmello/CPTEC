@@ -15,6 +15,14 @@ class ExpertsController < ApplicationController
     end
   end
 
+  def index
+    if params[:city].present? || params[:practitioner].present?
+      raise
+    else
+      @experts = Expert.where(active: true).last(10)
+    end
+  end
+
   private
 
   def edit_params
