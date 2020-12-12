@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-cptec">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "https://freepikpsd.com/wp-content/uploads/2019/10/court-Png-Transparent-Images.png" %>
+    <%= image_tag "" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@
           <%= link_to "Orientações", "/guidance", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Mensagens", "#", class: "nav-link" %>
+          <%= link_to "Consulta pública", "#", class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,7 +30,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Entrar", new_user_session_path, class: "nav-link active" %>
         </li>
       <% end %>
     </ul>
