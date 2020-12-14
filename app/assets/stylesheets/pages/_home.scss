@@ -1,15 +1,17 @@
 // Specific CSS for your home-page
 body {
-    background: white;
+    background: rgb(2, 2, 20);
+    background-image: url("surface.png");
+    opacity: 0.9;
     //padding: 50px 0;
   }
 
   .h1 {
     font-weight: bold;
-    color: black
+    color: whitesmoke
       }
   .my-container {
-      background: #0d27039d;
+      background: rgb(2, 2, 20);
       overflow: hidden;
   }
   .my-container:before {
@@ -29,26 +31,29 @@ body {
       text-align: center;
       z-index: 2;
       position: relative;
-      color: rgb(221, 209, 209);
+      color: whitesmoke;
   }
 
   #bem-vindo {
-      font-family: "Lucida Console", "Courier New", monospace;
+      font-family: monospace;
       font-weight: bold;
       font-stretch: semi-condensed;
-      color: rgb(1, 27, 5);
-      text-shadow: 2px 2px #447051;
+      color: whitesmoke;
+      text-shadow: silver;
       text-align: left;
       text-justify: inter-word;
   }
 
   #slide {
-    color: rgb(9, 14, 9);
-    text-shadow: 2px 2px #f7f7f7;
+    color: whitesmoke;
+    text-shadow: 2px 2px rgb(2, 2, 20);
   }
 
   .carousel {
-    width:750px;
+    position: relative;
+    max-width: 50%;
+    height: auto;  
+    opacity: 0.9;
   }
 
   br {
