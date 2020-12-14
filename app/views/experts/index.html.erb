@@ -1,11 +1,15 @@
 <h1>Pesquisa</h1>
 <p>Procure um perito utilizando os campos abaixo</p>
-<%= form_tag experts_path, class: 'form-inline', method: :get do |f| %>
-  <%= text_field_tag :city, params[:city], class: 'form-control', placeholder: 'Cidade' %>
-  <%= text_field_tag :practitioner, params[:practitioner], class: 'form-control', placeholder: 'Area e Especialidade' %>
-  <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe, class: 'btn btn-primary' do %>
-    <i class="fas fa-search"></i> Buscar
-  <% end %>
+<%= form_tag experts_path, method: :get do |f| %>
+  <%= text_field_tag :city, params[:city], class: 'form-control',
+      placeholder: 'Cidade' %>
+  <%= select_tag :practitioner, options_for_select(@pratictioners.map{|item| [item,item]}),
+      class: 'form-control',
+      placeholder: 'Area ou Especialidade' %>
+  <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
+      class: 'btn btn-primary' do %>
+        <i class="fas fa-search"></i> Buscar
+      <% end %>
 <% end %>
 <div class="results my-3">
   <% @experts.each do |expert| %>
@@ -22,7 +26,7 @@
         <%= expert.user.full_name %>
       </h5>
       <h6 class="card-subtittle text-muted">
-        Especialidades:
+        <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
       </h6>
       <% expert.fields.each do |field| %>
         <p class="card-text">

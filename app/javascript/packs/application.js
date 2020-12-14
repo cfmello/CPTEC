@@ -27,10 +27,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import {registerUser} from '../component/user_registration';
-// import { initSelect2 } from '../components/init_select2';
+import { initSelect2 } from '../component/initSelect2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  initSelect2();
   registerUser();
 });

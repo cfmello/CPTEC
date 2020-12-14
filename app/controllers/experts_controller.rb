@@ -17,10 +17,12 @@ class ExpertsController < ApplicationController
 
   def index
     if params[:city].present? || params[:practitioner].present?
-      raise
+      @experts = Expert.where(active: true)
+                       .city_search(params[:city]).pratictioner_search(params[:practitioner])
     else
       @experts = Expert.where(active: true).last(10)
     end
+    @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
   end
 
   private
