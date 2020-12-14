@@ -1,0 +1,26 @@
+<% fields.each do |field| %>
+  <tr id="field-<%= field.id %>">
+    <td><%= field.area %></td>
+    <td><%= field.title %></td>
+    <td><%= field.reg_number %></td>
+    <td>
+      <% if current_page?(edit_expert_path(field.expert)) %>
+        <%= button_tag '#',
+            data: {
+                toggle: "modal",
+                target: "#field#{ field.id }Modal"
+              },
+            class: 'btn btn-secondary' do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+        <%= button_to field_path(field),
+            method: :delete,
+            data: { confirm: 'Esta especialidade será removida do seu cadastro' },
+            class: 'btn btn-warning' do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+    

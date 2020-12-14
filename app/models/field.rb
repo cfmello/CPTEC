@@ -5,7 +5,7 @@ class Field < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :pratictioner_search,
-                  against: [ :title, :area ],
+                  against: [:title, :area],
                   using: {
                     tsearch: { prefix: true }
                   }
@@ -13,7 +13,7 @@ class Field < ApplicationRecord
   private
 
   def capitalize
-    self.area.capitalize!
-    self.title.capitalize!
+    area.capitalize!
+    title.capitalize!
   end
 end

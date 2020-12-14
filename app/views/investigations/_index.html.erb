@@ -1,0 +1,8 @@
+<% surveys.each do |surveys| %>
+  <tr id="survey-<%= survey.id %>">
+    <td><%= survey.proc_number %></td>
+    <td><%= survey.call_date %></td>
+    <td><%= survey.cost %></td>
+  </tr>
+<% end %>
+    

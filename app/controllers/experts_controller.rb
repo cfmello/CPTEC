@@ -25,10 +25,13 @@ class ExpertsController < ApplicationController
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
   end
 
+  def show
+    @expert = Expert.find(params[:id])
+  end
+
   private
 
   def edit_params
     params.require(:expert).permit(:phone_number, :city, :distance, :curriculum, :accept)
   end
-
 end

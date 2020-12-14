@@ -1,6 +1,6 @@
 class Expert < ApplicationRecord
   belongs_to :user
-  has_many :fields
+  has_many :fields, dependent: :destroy
   has_many :investigations
 
   validates :accept, presence: true, inclusion: { in: (0..2).to_a }

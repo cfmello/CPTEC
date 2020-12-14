@@ -15,11 +15,7 @@
   <% @experts.each do |expert| %>
     <div class="card card-body table-hover">
       <h5 class="card-tittle">
-        <%= button_tag '#',
-            data: {
-                toggle: "modal",
-                target: "#expert#{ expert.id }Modal"
-              },
+        <%= link_to expert_path(expert),
             class: 'btn btn-secondary' do %>
               <i class="far fa-eye"></i>
             <% end %>
