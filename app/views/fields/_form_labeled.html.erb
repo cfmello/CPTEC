@@ -1,0 +1,12 @@
+<tr>
+  <%= simple_form_for [expert, field] do |f| %>
+    <th><%= f.input :area, label: 'Area'  %></th>
+    <td><%= f.input :title, label: 'Especialidade' %></td>
+    <td><%= f.input :reg_number, label: 'Conselho' %></td>
+    <td>
+      <%= f.button :button, class: 'btn btn-primary' do %>
+        <i class="far fa-save"></i> Atualizar
+      <% end %>
+    </td>
+  <% end %>
+</tr>

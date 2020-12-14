@@ -1,5 +1,4 @@
 class Field < ApplicationRecord
   belongs_to :expert
-  validates :area, presence: true
-  validates :title, uniqueness: { case_sensitive: false, scope: :title }
+  validates :area, presence: true, uniqueness: { case_sensitive: true, scope: :title }
 end
