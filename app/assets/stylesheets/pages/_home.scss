@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 body {
-    background: #white;
+    background: white;
     //padding: 50px 0;
   }
 
@@ -32,10 +32,6 @@ body {
       color: rgb(221, 209, 209);
   }
 
-  .sub-container {
-    font-weight: bold;
-  }
-
   #bem-vindo {
       font-family: "Lucida Console", "Courier New", monospace;
       font-weight: bold;
@@ -45,3 +41,18 @@ body {
       text-align: left;
       text-justify: inter-word;
   }
+
+  #slide {
+    color: rgb(9, 14, 9);
+    text-shadow: 2px 2px #f7f7f7;
+  }
+
+  .carousel {
+    width:750px;
+  }
+
+  br {
+    display: block;
+    margin: 10px 0;
+    line-height: 150%;
+ }

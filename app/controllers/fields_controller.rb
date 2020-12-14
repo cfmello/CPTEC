@@ -8,7 +8,7 @@ class FieldsController < ApplicationController
     else
       flash[:alert] = @field.errors.messages.values.join('<br>')
     end
-    redirect_to edit_expert_path(@expert)
+    redirect_to edit_expert_path(@expert, anchor: "field-#{@field.id}")
   end
 
   def destroy
@@ -20,7 +20,16 @@ class FieldsController < ApplicationController
     end
     redirect_to edit_expert_path(@field.expert)
   end
-  
+
+  def update
+    @field = Field.find(params[:id])
+    if @field.update_attributes(field_params)
+      flash[:notice] = "Especialidade foi atualizada"
+    else
+      flash[:alert] = @field.errors.messages.values.join('<br>')
+    end
+    redirect_to edit_expert_path(@field.expert, anchor: "field-#{@field.id}")
+  end
 
   private
 
