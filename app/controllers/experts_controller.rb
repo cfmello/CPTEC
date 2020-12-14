@@ -25,6 +25,10 @@ class ExpertsController < ApplicationController
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
   end
 
+  def show
+    @expert = Expert.find(params[:id])
+  end
+
   private
 
   def edit_params

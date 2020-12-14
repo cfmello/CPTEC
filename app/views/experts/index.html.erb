@@ -23,7 +23,7 @@
             class: 'btn btn-secondary' do %>
               <i class="far fa-eye"></i>
             <% end %>
-        <%= expert.user.full_name %>
+        <%= link_to expert.user.full_name, expert_path(expert) %>
       </h5>
       <h6 class="card-subtittle text-muted">
         <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
@@ -31,14 +31,6 @@
       <% expert.fields.each do |field| %>
         <p class="card-text">
           <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
-        </p>
-        <p class="card-text">
-          <% unless @experts.files.zero? %>
-            <% @experts.files.each_with_index do |file, index| %>
-              <% raise %>
-              <%= link_to "Arquivo #{index+1}", cl_image_path(file.key) %>
-            <% end %>
-          <% end %>
         </p>
       <% end %>
     </div>
