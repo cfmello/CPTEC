@@ -6,7 +6,7 @@
   <%= f.input :city, label: 'Endereço', placeholder: 'Endereço',
       disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :distance, label: 'Raio de atuação (km)', placeholder: '100',
-      input_html: { value: 100, min: 0, max: 500, step: 10 },
+      input_html: { value: 100, min: 20, max: 500, step: 10 },
       disabled: !current_page?(edit_expert_path(@expert)) %>
   <%= f.input :curriculum, label: 'Currículo Lattes', placeholder: 'http://lattes.cnpq.br/123',
       disabled: !current_page?(edit_expert_path(@expert)) %>

@@ -18,7 +18,7 @@ class ExpertsController < ApplicationController
   def index
     if params[:city].present? || params[:practitioner].present?
       @experts = Expert.where(active: true)
-                       .smart_search("#{params[:city]} #{params[:practitioner]}")
+                       .city_search(params[:city]).pratictioner_search(params[:practitioner])
     else
       @experts = Expert.where(active: true).last(10)
     end
