@@ -28,7 +28,6 @@ class ExpertsController < ApplicationController
   private
 
   def edit_params
-    params.require(:expert).permit(:phone_number, :city, :distance, :curriculum, :accept)
+    params.require(:expert).permit(:phone_number, :city, :distance, :curriculum, :accept, files: [])
   end
-
 end

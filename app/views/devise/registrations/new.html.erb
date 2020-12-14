@@ -21,35 +21,40 @@
                 label: "Qual o seu perfil?" %>
     <%# FORMULARIO DE EXPERTS %>
     <fieldset id="form_experts" class="hide">
-      <%= f.simple_fields_for :experts do |o| %>
-        <%= o.input :phone_number,
+      <%= f.simple_fields_for :experts do |e| %>
+        <%= e.input :phone_number,
                     required: true,
                     label: "Telefone",
                     input_html: { autocomplete: "telefone" } %>
-        <%= o.input :city,
+        <%= e.input :city,
                     required: true,
                     label: "Cidade",
                     input_html: { autocomplete: "cidade"} %>
-        <%= o.input :doc_number,
+        <%= e.input :doc_number,
                     required: true,
                     label: "CPF ou CNPJ",
                     input_html: { autocomplete: "cpf", autocomplete: "cnpj"} %>
-        <%= o.input :accept,
+        <%= e.input :accept,
                     required: true,
                     collection: [['0', 'Apenas perícias particulares'], ['1', 'Justiça gratuita'], ['2', 'Ambos']],
                     label_method: :second,
                     value_method: :first,
-                    label: "Que tipo de serviço aceita?"
-                    %>
-        <%= o.input :distance,
+                    label: "Que tipo de serviço aceita?" %>
+        <%= e.input :distance,
                     required: true,
                     as: :integer,
-                    label: "Distância máxima de deslocamento (em quilômetros)",
+                    label: "Distância máxima de deslocamento (De 20 até 500, em quilômetros)",
                     input_html: { autocomplete: "distancia", min: '0', max: '500', step: '10'} %>
-        <%= o.input :curriculum,
+        <%= e.input :curriculum,
                     required: true,
                     label: "Link para o currículo na plataforma Lattes",
                     input_html: { autocomplete: "url", placeholder: 'http://lattes.cnpq.br/123456789'} %>
+        <label for="files">Anexe os arquivos comprobatórios da atividade exercida. <%= link_to 'Saiba mais', root_path, target: :_blank %></label>
+        <%= e.input :files,
+                    required: true,
+                    label: false,
+                    as: :file,
+                    input_html: { multiple: true } %>
       <% end %>
     </fieldset>
     <%# FORMULARIO DE SERVANTS %>

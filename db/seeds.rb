@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
 Expert.destroy_all
 Servant.destroy_all
+User.destroy_all
 puts 'Creating users...'
-User.create(full_name: 'Cristhiano Mello', email: 'cris@pelomun.do', profile: 'Servant', password: '123456')
-User.create(full_name: 'Adonay Veiga', email: 'adonayveiga@gmail.com', profile: 'Servant', password: '123456')
-User.create(full_name: 'Milena valle', email: 'milenavalle@gmail.com', profile: 'Servant', password: '123456')
-User.create(full_name: 'Felipe Taki', email: 'felipe.takizawa@mj.gov.br', profile: 'Servant', password: '123456')
+User.create(full_name: 'Cristhiano Mello', email: 'cris@pelomun.do', profile: '1', password: '123456')
+User.create(full_name: 'Adonay Veiga', email: 'adonayveiga@gmail.com', profile: '1', password: '123456')
+User.create(full_name: 'Milena valle', email: 'milenavalle@gmail.com', profile: '2', password: '123456')
+User.create(full_name: 'Felipe Taki', email: 'felipe.takizawa@mj.gov.br', profile: '3', password: '123456')
 
 users = User.all
 
