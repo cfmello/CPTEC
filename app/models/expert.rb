@@ -3,6 +3,8 @@ class Expert < ApplicationRecord
   has_many :fields
   has_many :investigations
 
+  
+
   include PgSearch::Model
   pg_search_scope :city_search,
                   against: [:city],
