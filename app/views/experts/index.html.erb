@@ -1,6 +1,6 @@
 <h1>Pesquisa</h1>
 <p>Procure um perito utilizando os campos abaixo</p>
-<%= form_tag experts_path, class: 'form-inline', method: :get do |f| %>
+<%= form_tag experts_path, method: :get do |f| %>
   <%= text_field_tag :city, params[:city], class: 'form-control',
       placeholder: 'Cidade' %>
   <%= select_tag :practitioner, options_for_select(@pratictioners.map{|item| [item,item]}),
