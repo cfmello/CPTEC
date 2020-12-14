@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Image upload to dynamic storage
 gem 'cloudinary', '~> 1.16.0'
+
+# Easy search engine
+gem 'pg_search', '~> 2.3.0'

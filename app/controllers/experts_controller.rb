@@ -17,10 +17,12 @@ class ExpertsController < ApplicationController
 
   def index
     if params[:city].present? || params[:practitioner].present?
-      raise
+      @experts = Expert.where(active: true)
+                       .smart_search("#{params[:city]} #{params[:practitioner]}")
     else
       @experts = Expert.where(active: true).last(10)
     end
+    @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
   end
 
   private
@@ -28,5 +30,5 @@ class ExpertsController < ApplicationController
   def edit_params
     params.require(:expert).permit(:phone_number, :city, :distance, :curriculum, :accept)
   end
-  
+
 end
