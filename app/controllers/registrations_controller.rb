@@ -24,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
                                  :email,
                                  :password,
                                  :password_confirmation,
-                                 experts_attributes: %i[doc_number phone_number city distance accept curriculum],
+                                 experts_attributes: %i[doc_number phone_number city distance accept curriculum files],
                                  servants_attributes: %i[court city])
   end
 
@@ -36,6 +36,7 @@ class RegistrationsController < Devise::RegistrationsController
     @expert.distance = params[:user][:experts][:distance]
     @expert.accept = params[:user][:experts][:accept]
     @expert.curriculum = params[:user][:experts][:curriculum]
+    @expert.files = params[:user][:expert][:files]
     @expert.user = user
   end
 
