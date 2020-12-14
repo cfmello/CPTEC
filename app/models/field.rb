@@ -1,5 +1,6 @@
 class Field < ApplicationRecord
   belongs_to :expert
+  before_validation :capitalize
   validates :area, presence: true, uniqueness: { case_sensitive: false, scope: [:title, :expert] }
 
   include PgSearch::Model
@@ -8,4 +9,11 @@ class Field < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  
+  private
+
+  def capitalize
+    self.area.capitalize!
+    self.title.capitalize!
+  end
 end

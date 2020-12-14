@@ -6,9 +6,9 @@ class Expert < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :smart_search,
                   against: [:city],
-                  associated_against: {
-                    fields: [:title, :area]
-                  },
+                  # associated_against: {
+                  #   fields: [:title, :area]
+                  # },
                   using: {
                     tsearch: { prefix: true }
                   }
