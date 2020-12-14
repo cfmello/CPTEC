@@ -35,6 +35,7 @@
         <p class="card-text">
           <% unless @experts.files.zero? %>
             <% @experts.files.each_with_index do |file, index| %>
+              <% raise %>
               <%= link_to "Arquivo #{index+1}", cl_image_path(file.key) %>
             <% end %>
           <% end %>
