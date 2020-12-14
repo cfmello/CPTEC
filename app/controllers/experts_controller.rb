@@ -16,13 +16,15 @@ class ExpertsController < ApplicationController
   end
 
   def index
-    if params[:city].present? || params[:practitioner].present?
-      @experts = Expert.where(active: true)
-                       .city_search(params[:city]).pratictioner_search(params[:practitioner])
-    else
-      @experts = Expert.where(active: true).last(10)
-    end
+    @experts = Expert.where(active: true)
+    @experts = @experts.city_search(params[:city]) if params[:city].present?
+    @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
+    @experts = Expert.where(active: true).last(10) unless params[:city].present? || params[:practitioner].present?
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
+  end
+
+  def show
+    @expert = Expert.find(params[:id])
   end
 
   private
