@@ -3,7 +3,11 @@ class Expert < ApplicationRecord
   has_many :fields
   has_many :investigations
 
-  
+  validates :accept, presence: true, inclusion: { in: (0..2).to_a }
+  validates :distance, presence: true, inclusion: { in: (20..500).to_a }
+  validates :curriculum, format: { with: /\Ahttp:\/\/lattes.cnpq.br\/\d+\z/ }
+  validates :doc_number, presence: true, uniqueness: true,
+            format: { with: /\A(\d{11}|\d{14})\z/ }
 
   include PgSearch::Model
   pg_search_scope :city_search,
