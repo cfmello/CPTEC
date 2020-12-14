@@ -35,8 +35,9 @@ class RegistrationsController < Devise::RegistrationsController
     @expert.city = params[:user][:experts][:city]
     @expert.distance = params[:user][:experts][:distance]
     @expert.accept = params[:user][:experts][:accept]
+    @expert.active = true
     @expert.curriculum = params[:user][:experts][:curriculum]
-    @expert.files = params[:user][:expert][:files]
+    @expert.files = params[:user][:experts][:files]
     @expert.user = user
   end
 
