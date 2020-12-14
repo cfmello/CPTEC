@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 body {
-    background: midnightblue;
+    background: rgb(2, 2, 20);
+    background-image: url("images/Icon.png");
     //padding: 50px 0;
   }
 
@@ -9,7 +10,7 @@ body {
     color: whitesmoke
       }
   .my-container {
-      background: midnightblue;
+      background: rgb(2, 2, 20);
       overflow: hidden;
   }
   .my-container:before {
@@ -33,7 +34,7 @@ body {
   }
 
   #bem-vindo {
-      font-family: "Lucida Console", "Courier New", monospace;
+      font-family: monospace;
       font-weight: bold;
       font-stretch: semi-condensed;
       color: whitesmoke;
@@ -44,11 +45,13 @@ body {
 
   #slide {
     color: whitesmoke;
-    text-shadow: 1px 1px midnightblue;
+    text-shadow: 1px 1px rgb(2, 2, 20);
   }
 
   .carousel {
-    width:750px;
+    position: relative;
+    max-width:700px;
+    max-height:500px;
   }
 
   br {
