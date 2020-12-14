@@ -44,20 +44,24 @@ body {
       text-justify: inter-word;
   }
 
-  #slide {
-    color: whitesmoke;
-    text-shadow: 2px 2px rgb(2, 2, 20);
-  }
+  // #slide {
+  //   color: whitesmoke;
+  //   text-shadow: 2px 2px rgb(2, 2, 20);
+  // }
 
-  .carousel {
-    position: relative;
-    max-width: 50%;
-    height: auto;  
-    opacity: 0.9;
-  }
+  // .carousel {
+  //   position: relative;
+  //   max-width: 50%;
+  //   height: auto;  
+  //   opacity: 0.9;
+  // }
 
   br {
     display: block;
     margin: 10px 0;
     line-height: 150%;
+ }
+
+ #first-home {
+    font-size: 100px;
  }
