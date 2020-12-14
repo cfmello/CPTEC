@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(255, 252, 211);
+  background: navy;
  }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,4 +13,8 @@
 .navbar-lewagon .blocktext {
     text-align: right;
     width: 6em
+}
+
+.nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+  color: whitesmoke;
 }
