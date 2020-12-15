@@ -1,17 +1,17 @@
 class InvestigationsController < ApplicationController
+  before_action :validar_acesso
   def new
     @investigation = Investigation.new
-    @expert = Expert.find(params[:expert_id])
-    @servant = Servant.find_by(user_id: current_user.id)
   end
-  
+
   def create
-    # render root_path unless (2..3).to_a.include?(current_user.profile)
     @expert = Expert.find(params[:expert_id])
     @investigation = Investigation.new(investigation_params)
-    @investigation.cost = 'Aceite pendente'
+    @investigation.servant = @servant
+    @investigation.expert = @expert
     if @investigation.save
       flash[:notice] = "O perito receberá um convite por email"
+      UserMailer.with(user: @expert.user).convoca(@current_user,@investigation.proc_number)
       redirect_to @investigation
     else
       flash[:alert] = @investigation.errors.messages.join('<br>').html_safe
@@ -22,6 +22,15 @@ class InvestigationsController < ApplicationController
   private
 
   def investigation_params
-    params.require(:investigation).permit(:proc_number, :servant, :call_date)
+    params.require(:investigation).permit(:proc_number, :call_date)
+  end
+
+  def validar_acesso
+    @servant = Servant.find_by(user_id: current_user.id)
+    @expert = Expert.find(params[:expert_id])
+    unless ('2'..'3').to_a.include?(current_user.profile)
+      flash[:alert] = 'Não autorizado'
+      redirect_to root_path
+    end
   end
 end
