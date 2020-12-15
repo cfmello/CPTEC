@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(2, 2, 20);
-  background-image: url("surface.png");
+  background: white;
+  //background-image: url("surface.png");
   font-size: 20px;
  }
 
@@ -18,5 +18,5 @@
 }
 
 .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-  color: whitesmoke;
+  color: black;
 }
