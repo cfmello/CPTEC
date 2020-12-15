@@ -25,3 +25,7 @@
 .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
   color: white;
 }
+
+.navbar-expand-sm .navbar-nav .nav-link {
+  padding-right: 2rem;
+}
