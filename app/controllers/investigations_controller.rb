@@ -26,7 +26,7 @@ class InvestigationsController < ApplicationController
 
   def validar_acesso
     @expert = Expert.find(params[:expert_id])
-    unless (2..3).to_a.include?(current_user.profile)
+    unless ('2'..'3').to_a.include?(current_user.profile)
       flash[:alert] = 'Não autorizado'
       redirect_to root_path
     end
