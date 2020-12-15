@@ -1,0 +1,9 @@
+<h1>Confirmação</h1>
+<p>Para confirmar, insira abaixo o número do processo</p>
+
+<%= simple_form_for [@expert, @investigation] do |f| %>
+  <%= f.input :proc_number, label: 'Número do Processo' %>
+  <%= f.input :servant, label: false, value: @servant, input_html: { hidden: true } %>
+  <%= f.input :call_date, label: false, value: Time.now, input_html: { hidden: true } %>
+  <%= f.submit 'Chamar', class: 'btn btn-primary' %>
+<% end %>

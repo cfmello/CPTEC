@@ -1,7 +1,9 @@
-<div class="d-flex">
-  <h1>Especialista <%= @expert.user.full_name %></h1>
-  <button type="button" class="btn btn-primary">Convocar especialista</button>
-</div>
+<h1>Especialista <%= @expert.user.full_name %></h1>
+<%= link_to  new_expert_investigation_path(@expert),
+    class: 'btn btn-secondary' do %>
+      <i class="far fa-handshake"></i> Convocar especialista
+    <% end %>
+
 <div class="container row">
   <div class="container col-12 col-md-6">
     <%= render 'form' %>
