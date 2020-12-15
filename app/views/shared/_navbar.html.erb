@@ -11,15 +11,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "O projeto", "/about", class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Orientações", "/guidance", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Consulta pública", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
           <%= current_user.full_name %>
           <%= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,6 +21,15 @@
           </div>
         </li>
       <% else %>
+        <li class="nav-item active">
+          <%= link_to "O projeto", "/about", class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Orientações", "/guidance", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Consulta pública", "#", class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to "Entrar", new_user_session_path, class: "nav-link active" %>
         </li>

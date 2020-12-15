@@ -3,7 +3,7 @@
 
 <%= simple_form_for [@expert, @investigation] do |f| %>
   <%= f.input :proc_number, label: 'Número do Processo' %>
-  <%= f.input :servant, label: false, value: @servant, input_html: { hidden: true } %>
+  <%#= f.input :servant, label: false, value: @servant.id, input_html: { hidden: true } %>
   <%= f.input :call_date, label: false, value: Time.now, input_html: { hidden: true } %>
   <%= f.submit 'Chamar', class: 'btn btn-primary' %>
 <% end %>
