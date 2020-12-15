@@ -30,7 +30,8 @@
       <h6 class="card-subtittle text-muted">
         <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
       </h6>
-      <% expert.fields.each do |field| %>
+      <% fields = params[:practitioner].present? ? expert.fields.pratictioner_search(params[:practitioner]) : expert.fields.each %>
+      <% fields.each do |field| %>
         <p class="card-text">
           <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
         </p>
