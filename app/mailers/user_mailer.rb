@@ -8,4 +8,10 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     mail to: @user.email, subject: "Bem vindo ao CPTEC"
   end
+
+  def convoca
+    @user = params[:user]
+    @sender = current_user
+    mail to: @user.email, subject: "Você tem uma nova convocação"
+  end
 end
