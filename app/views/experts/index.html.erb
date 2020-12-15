@@ -7,9 +7,10 @@
       class: 'form-control',
       placeholder: 'Area ou Especialidade' %>
   <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
-      class: 'btn btn-primary' do %>
-        <i class="fas fa-search"></i> Buscar
-      <% end %>
+      class: 'btn btn-primary', value: 'search' %>
+  <%= button_tag '<i class="fas fa-braille"></i> Sortear'.html_safe,
+      class: 'btn btn-primary', value: 'pick',
+      data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
 <% end %>
 <div class="results my-3">
   <% @experts.each do |expert| %>
