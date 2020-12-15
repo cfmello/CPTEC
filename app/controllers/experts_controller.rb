@@ -1,5 +1,6 @@
 class ExpertsController < ApplicationController
   before_action :validar_acesso, only: %i[edit update]
+  before_action :validar_acesso_index, only: :index
   def edit
     @field = Field.new
   end
@@ -47,9 +48,17 @@ class ExpertsController < ApplicationController
 
   def validar_acesso
     @expert = Expert.find(params[:id])
-    unless current_user.id == @expert.user.id
+    unless current_user.id == @expert.user.id && current_user.profile == '1'
       flash[:alert] = 'Não autorizado'
       redirect_to root_path
     end
   end
+
+  def validar_acesso_index
+    unless ('2'..'3').to_a.include?(current_user.profile)
+      flash[:alert] = 'Não autorizado'
+      redirect_to root_path
+    end
+  end
+  
 end

@@ -47,7 +47,7 @@ class FieldsController < ApplicationController
 
   def validar_acesso_destroy
     @field = Field.find(params[:id])
-    unless current_user.id == @field.expert.user.id
+    unless current_user.id == @field.expert.user.id && current_user.profile == '1'
       flash[:alert] = 'Não autorizado'
       redirect_to root_path
     end
