@@ -18,9 +18,9 @@ User.create(full_name: 'Felipe Taki', email: 'felipe.takizawa@mj.gov.br', profil
 users = User.all
 
 puts 'Creating experts...'
-exp1 = Expert.new(doc_number: '12345678963', phone_number: '321654987', city: 'Curitiba', active: true, accept: 2)
+exp1 = Expert.new(doc_number: '12345678963', phone_number: '321654987', city: 'Curitiba', distance: 200, curriculum: 'http://lattes.cnpq.br/980688156015236', active: true, accept: 2)
 exp1.user = users[0]
-exp2 = Expert.new(doc_number: '12345678965', phone_number: '321654987', city: 'Brasilia', active: true, accept: 1)
+exp2 = Expert.new(doc_number: '12345678965', phone_number: '321654987', city: 'Brasilia', distance: 200, curriculum: 'http://lattes.cnpq.br/985688156015236', active: true, accept: 1)
 exp2.user = users[1]
 exp1.save
 exp2.save

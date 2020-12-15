@@ -19,6 +19,14 @@
       </tbody>
     </table>
   </div>
+  <div class="container col-12 col-md-6">
+  <h2>Arquivos</h2>
+    <% unless @expert.files.empty? %>
+      <% @expert.files.each_with_index do |file, index| %>
+        <%= link_to "Arquivo #{index+1}", file, download: "data" %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="container col-12">
     <h2>Participações</h2>
     <table class="table table-hover">
