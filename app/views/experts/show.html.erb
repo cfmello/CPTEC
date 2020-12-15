@@ -1,20 +1,45 @@
-<h1><%= @expert.user.full_name %> - Mostrar fields.title aqui </h1>
-  <h6 class="card-subtittle text-muted"><i class="fas fa-map-marker-alt"></i> <%= @expert.city %> • <%= @expert.fields.count %> Especialidades </h6>
-<h3>Especialidades</h3>
-<div class="card card-body table-hover">
-  <h5 class="card-tittle">
-    <% @expert.fields.each do |field| %>
-      <p class="card-text">
-        <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
-      </p>
-    <% end %>
-    <p class="card-text">
-      <% unless @expert.files.empty? %>
-        <% @expert.files.each_with_index do |file, index| %>
-          <%= link_to "Arquivo #{index+1}", file, download: "data" %>
-        <% end %>
+<h1>Especialista <%= @expert.user.full_name %></h1>
+<div class="container row">
+  <div class="container col-12 col-md-6">
+    <%= render 'form' %>
+  </div>
+  <div class="container col-12 col-md-6">
+    <h2>Especialidades</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Área</th>
+          <th scope="col">Especialidade</th>
+          <th scope="col">Registro Conselho</th>
+          <th scope="col"><i class="fas fa-sliders-h"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'fields/index', fields: @expert.fields %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container col-12 col-md-6">
+  <h2>Arquivos</h2>
+    <% unless @expert.files.empty? %>
+      <% @expert.files.each_with_index do |file, index| %>
+        <%= link_to "Arquivo #{index+1}", file, download: "data" %>
       <% end %>
-    </p>
-  </h5>
-
+    <% end %>
+  </div>
+  <div class="container col-12">
+    <h2>Participações</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Número do Processo</th>
+          <th scope="col">Data Nomeação</th>
+          <th scope="col">Andamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'investigations/index', surveys: @expert.investigations %>
+      </tbody>
+    </table>
+  </div>
 </div>
