@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :experts, only: %i[edit update index show] do
     resources :fields, only: %i[create update]
+    resources :investigations, only: %i[new create]
   end
   resources :fields, only: :destroy
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

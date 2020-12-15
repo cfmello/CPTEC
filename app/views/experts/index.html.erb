@@ -18,9 +18,9 @@
   <% @experts.each do |expert| %>
     <div class="card card-body">
       <h5 class="card-tittle">
-        <%= link_to '#',
+        <%= link_to new_expert_investigation_path(expert),
             class: 'btn btn-secondary',
-            data: { confirm: 'Deseja selecionar este profissional? '} do %>
+            data: { confirm: 'Deseja selecionar este profissional?'} do %>
               <i class="far fa-handshake"></i>
             <% end %>
         <%= link_to expert_path(expert),

@@ -1,5 +1,5 @@
 <h1>Especialista <%= @expert.user.full_name %></h1>
-<%= link_to '#',
+<%= link_to  new_expert_investigation_path(@expert),
     class: 'btn btn-secondary' do %>
       <i class="far fa-handshake"></i> Selecionar este auxiliar
     <% end %>
