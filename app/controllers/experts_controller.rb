@@ -21,6 +21,18 @@ class ExpertsController < ApplicationController
     @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
     @experts = Expert.where(active: true).last(10) unless params[:city].present? || params[:practitioner].present?
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
+    return unless params[:button] == 'pick'
+
+    if params[:city].present? && params[:practitioner].present?
+      if @experts.length.positive?
+        # TODO: sortear e criar participacao
+        raise
+      else
+        flash[:alert] = 'Nenhum especialista para sortear. Realize nova busca'
+      end
+    else
+      flash[:alert] = 'Aplique ambos os filtros para realizar o sorteio'
+    end
   end
 
   def show
