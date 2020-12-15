@@ -6,10 +6,10 @@ body {
 
   .h1 {
     font-weight: bold;
-    color: whitesmoke
+    color: black
       }
   .my-container {
-      background: rgb(2, 2, 20);
+      background: whitesmoke;
       overflow: hidden;
   }
   .my-container:before {
@@ -33,7 +33,7 @@ body {
   }
 
   #bem-vindo {
-      font-family: monospace;
+      font-family: arial;
       font-weight: bold;
       font-stretch: semi-condensed;
       color: whitesmoke;
@@ -42,15 +42,15 @@ body {
       text-justify: inter-word;
   }
 
-  // #slide {
-  //   color: whitesmoke;
-  //   text-shadow: 2px 2px rgb(2, 2, 20);
-  // }
+   #slide {
+   color: whitesmoke;
+   text-shadow: 2px 2px rgb(2, 2, 20);
+   }
 
   // .carousel {
   //   position: relative;
   //   max-width: 50%;
-  //   height: auto;  
+  //   height: auto;
   //   opacity: 0.9;
   // }
 
@@ -63,7 +63,7 @@ body {
  #first-home {
     font-size: 60px;
     text-transform: uppercase;
-    color: lightgrey;
+    color: black;
  }
 
  #cap-home {
@@ -76,7 +76,7 @@ body {
 }
 
  #first-cont{
-    background-image: url("surface.png");
+    //background-image: url("surface.png");
     width: 100%;
     height: 100vh;
  }
