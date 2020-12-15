@@ -9,7 +9,7 @@ body {
     color: black
       }
   .my-container {
-      background: whitesmoke;
+      background: rgb(0, 0, 0);
       overflow: hidden;
   }
   .my-container:before {
@@ -29,19 +29,28 @@ body {
       text-align: center;
       z-index: 2;
       position: relative;
+<<<<<<< HEAD
       color: black;
+=======
+      color: rgb(0, 0, 0);
+>>>>>>> master
   }
 
   #bem-vindo {
       font-family: arial;
       font-weight: bold;
       font-stretch: semi-condensed;
+<<<<<<< HEAD
       color: black;
+=======
+      color: rgb(0, 0, 0);
+>>>>>>> master
       text-shadow: silver;
       text-align: left;
       text-justify: inter-word;
   }
 
+<<<<<<< HEAD
    #slide {
    color: black;
    text-shadow: 2px 2px rgb(2, 2, 20);
@@ -54,6 +63,8 @@ body {
   //   opacity: 0.9;
   // }
 
+=======
+>>>>>>> master
   br {
     display: block;
     margin: 10px 0;
