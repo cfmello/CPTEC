@@ -14,30 +14,54 @@
       class: 'btn btn-primary', value: 'pick',
       data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
 <% end %>
-<div class="results my-3">
-  <% @experts.each do |expert| %>
-    <div class="card card-body">
-      <h5 class="card-tittle">
-        <%= link_to new_expert_investigation_path(expert),
-            class: 'btn btn-secondary',
-            data: { confirm: 'Deseja selecionar este profissional?'} do %>
-              <i class="far fa-handshake"></i>
-            <% end %>
-        <%= link_to expert_path(expert),
-            class: 'btn btn-secondary' do %>
-              <i class="fas fa-scroll"></i>
-            <% end %>
-        <%= link_to expert.user.full_name, expert_path(expert) %>
-      </h5>
-      <h6 class="card-subtittle text-muted">
-        <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
-      </h6>
-      <% fields = params[:practitioner].present? ? expert.fields.pratictioner_search(params[:practitioner]) : expert.fields.each %>
-      <% fields.each do |field| %>
-        <p class="card-text">
-          <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
-        </p>
-      <% end %>
+<div data-controller='search'>
+  <div class="results my-3">
+    <% @experts.each do |expert| %>
+      <div class="card card-body">
+        <h5 class="card-tittle">
+          <%= link_to new_expert_investigation_path(expert),
+              class: 'btn btn-secondary',
+              data: { confirm: 'Deseja selecionar este profissional?'} do %>
+                <i class="far fa-handshake"></i>
+              <% end %>
+          <%= link_to expert_path(expert),
+              class: 'btn btn-secondary',
+              data: {
+                toggle: 'modal',
+                target: '#pergamum',
+                action: 'click->search#do',
+                id: expert.id
+              } do %>
+                <i class="fas fa-scroll"></i>
+              <% end %>
+          <%= link_to expert.user.full_name, expert_path(expert) %>
+        </h5>
+        <h6 class="card-subtittle text-muted">
+          <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
+        </h6>
+        <% fields = params[:practitioner].present? ? expert.fields.pratictioner_search(params[:practitioner]) : expert.fields.each %>
+        <% fields.each do |field| %>
+          <p class="card-text">
+            <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="modal fade" id="pergamum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Dados Cadastrais</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" data-search-target="content">
+          ...
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

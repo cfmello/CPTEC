@@ -1,11 +1,4 @@
-<style>
-  h1 {
-    background-color: red;
-    color: white;
-    font-weight: bolder;
-  }
-</style>
-<h1>IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE</h1>
-<p>Prezado <%= @expert.user.full_name %>, você foi convocado pelo orgão <%= @sender.servant.court %> como perito no processo número <%= @proc %>.</p>
+<h1 style="background-color:red;color:white;font-weight:bolder;">IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE IMPORTANTE</h1>
+<p>Prezado <%= @expert.user.full_name %>, você foi convocado por <%= @sender.full_name %>\<%= @servant.court %> como perito no processo número <%= @proc %>.</p>
 <br><br>
-<p>Para aceitar, acesse o CPTEC em <a href="https://cptec.herokuapp.com/" target="_blank">https://cptec.herokuapp.com/</a></p>
+<p>Para aceitar, acesse o CPTEC em <a href="https://cptec.herokuapp.com/" target="_blank">https://cptec.herokuapp.com/</a>.</p>

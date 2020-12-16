@@ -3,4 +3,3 @@ class StaticController < ApplicationController
     render params[:page]
   end
 end
-

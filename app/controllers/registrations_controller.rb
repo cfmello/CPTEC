@@ -1,13 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
-    if @user.profile == '1'
+    case @user.profile
+    when '1'
       if @user.save && create_expert(@user) && @expert.save
         redirect_to new_user_session_path
       else
         render :new
       end
-    elsif @user.profile == "2" || @user.profile == "3"
+    when "2", "3"
       if @user.save && create_servant(@user) && @servant.save
         redirect_to new_user_session_path
       else
