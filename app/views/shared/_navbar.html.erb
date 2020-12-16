@@ -1,12 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <nav class="navbar navbar-default custom">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "" %>
+    <%= image_tag ("CPTEC.png")  %>
     <% end %>
+    <div class= "logo" img= ../..image/CPTEC.png alt="logo"> </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -22,16 +23,17 @@
         </li>
       <% else %>
         <li class="nav-item active">
-          <%= link_to "O projeto", "/about", class: "nav-link" %>
+          <%= link_to "O PROJETO", "/about", class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "Orientações", "/guidance", class: "nav-link" %>
+          <%= link_to "ORIENTAÇÕES GERAIS", "/guidance", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Consulta pública", "#", class: "nav-link" %>
+
+          <%= link_to "CONSULTA PÚBLICA", "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Entrar", new_user_session_path, class: "nav-link active" %>
+          <%= link_to "ENTRAR", new_user_session_path, class: "nav-link active" %>
         </li>
       <% end %>
     </ul>
