@@ -4,47 +4,45 @@
       <i class="far fa-handshake"></i> Convocar especialista
     <% end %>
 
-<div class="container row">
-  <div class="container col-12 col-md-6">
-    <%= render 'form' %>
-  </div>
-  <div class="container col-12 col-md-6">
-    <h2>Especialidades</h2>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Área</th>
-          <th scope="col">Especialidade</th>
-          <th scope="col">Registro Conselho</th>
-          <th scope="col"><i class="fas fa-sliders-h"></i></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render 'fields/index', fields: @expert.fields %>
-      </tbody>
-    </table>
-  </div>
-  <div class="container col-12 col-md-6">
-  <h2>Arquivos</h2>
-    <% unless @expert.files.empty? %>
-      <% @expert.files.each_with_index do |file, index| %>
-        <%= link_to "Arquivo #{index+1}", file, download: "data" %>
-      <% end %>
+<div class="container">
+  <%= render 'form' %>
+</div>
+<div class="container">
+  <h2>Especialidades</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Área</th>
+        <th scope="col">Especialidade</th>
+        <th scope="col">Registro Conselho</th>
+        <th scope="col"><i class="fas fa-sliders-h"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render 'fields/index', fields: @expert.fields %>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+<h2>Arquivos</h2>
+  <% unless @expert.files.empty? %>
+    <% @expert.files.each_with_index do |file, index| %>
+      <%= link_to "Arquivo #{index+1}", file, download: "data" %>
     <% end %>
-  </div>
-  <div class="container col-12">
-    <h2>Participações</h2>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Número do Processo</th>
-          <th scope="col">Data Nomeação</th>
-          <th scope="col">Andamento</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render 'investigations/index', surveys: @expert.investigations %>
-      </tbody>
-    </table>
-  </div>
+  <% end %>
+</div>
+<div class="container">
+  <h2>Participações</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Número do Processo</th>
+        <th scope="col">Data Nomeação</th>
+        <th scope="col">Andamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render 'investigations/index', surveys: @expert.investigations %>
+    </tbody>
+  </table>
 </div>
