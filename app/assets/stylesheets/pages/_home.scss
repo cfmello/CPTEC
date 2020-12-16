@@ -63,7 +63,23 @@ body {
   color: black
 }
 
- #first-cont{
-    width: 100%;
-    height: 50vh;
- }
+.banner{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid red;
+    left: 0;
+    position: fixed;
+    background-color: whitesmoke;
+}
+
+footer {
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color: #455f92;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
