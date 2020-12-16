@@ -2,21 +2,34 @@
   justify-content: space-between;
   background: white;
   //background-image: url("surface.png");
-  font-size: 20px;
+  font-size: 18px;
  }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-brand {
+  margin-left: 50px;
+  img {
+  width: 250px;
+  }
 }
+
 .navbar-lewagon .blocktext {
     text-align: right;
     width: 6em
 }
 
 .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-  color: black;
+  color: blue;
 }
+.nav-item {
+    margin: 0 20px;
+}
+.navbar.custom {
+  width: 150%;
+  margin: 0 auto;
+}
+
+
