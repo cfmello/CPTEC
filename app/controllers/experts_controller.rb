@@ -11,7 +11,7 @@ class ExpertsController < ApplicationController
       redirect_to @expert
     else
       flash[:alert] = @expert.errors.messages.join('<br>').html_safe
-      render 'edit'
+      render 'Editar'
     end
   end
 
@@ -60,5 +60,4 @@ class ExpertsController < ApplicationController
       redirect_to root_path
     end
   end
-  
 end
