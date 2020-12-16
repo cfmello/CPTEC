@@ -12,7 +12,7 @@ class InvestigationsController < ApplicationController
     @investigation.expert = @expert
     if @investigation.save
       flash[:notice] = "Convocação confirmada"
-      mail = UserMailer.with(user: @expert).convoca(current_user, @investigation.proc_number)
+      mail = UserMailer.with(expert: @expert).convoca(current_user, @investigation.proc_number)
       mail.deliver_now
       redirect_to @investigation
     else
