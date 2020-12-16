@@ -7,11 +7,11 @@ export default class extends Controller {
   }
 
   do(event){
-    fetch(`/experts/${event.currentTarget.dataset.id}`)
-      .then(response => response.text())
+    fetch(`/experts/${event.currentTarget.dataset.id}`, { headers: { accept: 'application/json' } })
+      .then(response => response.json())
       .then(data => {
-        this.contentTarget.innerHTML = data;
-        // this.nameTarget.innerText = event.currentTarget.dataset.id;
+        this.contentTarget.innerHTML = data.content;
+        this.nameTarget.innerText = data.name;
       });
   }
 }
