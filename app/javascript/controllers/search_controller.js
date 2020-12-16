@@ -1,17 +1,16 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'name', 'content' ];
+  static targets = [ 'content' ];
   connect() {
     console.log('Hello!');
   }
 
   do(event){
-    fetch(`/experts/${event.currentTarget.dataset.id}`)
-      .then(response => response.text())
+    fetch(`/experts/${event.currentTarget.dataset.id}`, { headers: { accept: 'application/json' } })
+      .then(response => response.json())
       .then(data => {
-        this.contentTarget.innerHTML = data;
-        // this.nameTarget.innerText = event.currentTarget.dataset.id;
+        this.contentTarget.innerHTML = data.content;
       });
   }
 }

@@ -26,6 +26,14 @@ class ExpertsController < ApplicationController
 
   def show
     @expert = Expert.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          content: render_to_string("show", formats: :html, layout: false)
+        }
+      end
+    end
   end
 
   private
