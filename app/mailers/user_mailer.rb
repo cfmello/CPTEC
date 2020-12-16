@@ -10,9 +10,9 @@ class UserMailer < ApplicationMailer
   end
 
   def convoca(sender, procnum)
-    @expert = params[:user]
+    @expert = params[:expert]
     @sender = sender
     @proc = procnum
-    mail to: @user.email, subject: "Você tem uma nova convocação!"
+    mail to: @expert.user.email, subject: "Você tem uma nova convocação!"
   end
 end
