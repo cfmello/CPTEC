@@ -41,5 +41,4 @@ class InvestigationsController < ApplicationController
   def fetch_expert
     @expert = Expert.find(params[:expert_id])
   end
-  
 end
