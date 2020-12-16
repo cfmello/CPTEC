@@ -1,0 +1,11 @@
+<h1>Convocação registrada</h1>
+
+<p>
+O auxiliar <%= @investigation.expert.user.full_name %> será convidado a atuar
+no processo de nº <%= @investigation.proc_number %>
+</p>
+
+<p>
+<%= link_to '<i class="fas fa-search"></i> Nova Busca'.html_safe, experts_path,
+    class: 'btn btn-primary' %>
+</p>
