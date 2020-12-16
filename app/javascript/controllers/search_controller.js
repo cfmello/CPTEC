@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'name', 'content' ];
+  static targets = [ 'content' ];
   connect() {
     console.log('Hello!');
   }
@@ -11,7 +11,6 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         this.contentTarget.innerHTML = data.content;
-        this.nameTarget.innerText = data.name;
       });
   }
 }

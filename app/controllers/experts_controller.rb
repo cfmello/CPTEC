@@ -30,8 +30,7 @@ class ExpertsController < ApplicationController
       format.html
       format.json {
         render json: {
-          name: @expert.user.full_name,
-          content: render_to_string("show", :formats => [:html], :layout => false, :locals => {:biz => @biz})
+          content: render_to_string("show", formats: :html, layout: false)
         }
       }
     end
