@@ -11,7 +11,7 @@ class InvestigationsController < ApplicationController
     @investigation.expert = @expert
     if @investigation.save
       flash[:notice] = "O perito receberá um convite por email"
-      UserMailer.with(user: @expert.user).convoca(@current_user,@investigation.proc_number)
+      UserMailer.with(user: @expert.user).convoca(@current_user, @investigation.proc_number)
       redirect_to @investigation
     else
       flash[:alert] = @investigation.errors.messages.join('<br>').html_safe
