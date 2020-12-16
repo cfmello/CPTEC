@@ -18,7 +18,7 @@ class FieldsController < ApplicationController
     else
       flash[:alert] = @field.errors.messages.values.join('<br>')
     end
-    redirect_to edit_expert_path(@field.expert)
+    redirect_to edit_expert_path(@field.expert, anchor: "new_field")
   end
 
   def update

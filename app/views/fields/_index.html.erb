@@ -1,5 +1,5 @@
 <% fields.each do |field| %>
-  <tr id="field-<%= field.id %>" data-controller='field' data-field-target='content'>
+  <tr id="field-<%= field.id %>">
     <td><%= field.area %></td>
     <td><%= field.title %></td>
     <td><%= field.reg_number %></td>
@@ -9,16 +9,16 @@
             data: {
                 toggle: "modal",
                 target: "#field#{ field.id }Modal",
-                action: 'click->field#edit'
               },
+              remote: true,
             class: 'btn btn-secondary' do %>
               <i class="far fa-edit"></i>
             <% end %>
         <%= button_to field_path(field),
             method: :delete,
+            remote: true,
             data: {
               confirm: 'Esta especialidade será removida do seu cadastro',
-              action: 'click->field#delete'
               },
             class: 'btn btn-warning' do %>
               <i class="far fa-trash-alt"></i>
