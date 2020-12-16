@@ -8,14 +8,18 @@
         <%= button_tag '#',
             data: {
                 toggle: "modal",
-                target: "#field#{ field.id }Modal"
+                target: "#field#{ field.id }Modal",
               },
+              remote: true,
             class: 'btn btn-secondary' do %>
               <i class="far fa-edit"></i>
             <% end %>
         <%= button_to field_path(field),
             method: :delete,
-            data: { confirm: 'Esta especialidade será removida do seu cadastro' },
+            remote: true,
+            data: {
+              confirm: 'Esta especialidade será removida do seu cadastro',
+              },
             class: 'btn btn-warning' do %>
               <i class="far fa-trash-alt"></i>
             <% end %>

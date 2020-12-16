@@ -1,5 +1,5 @@
 <tr>
-  <%= simple_form_for [@expert, @field] do |f| %>
+  <%= simple_form_for [@expert, @field], remote: true do |f| %>
     <th><%= f.input :area, label:false,
       disabled: !current_page?(edit_expert_path(@expert)) %></th>
     <td><%= f.input :title, label:false,
