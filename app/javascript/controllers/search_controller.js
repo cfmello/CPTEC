@@ -7,7 +7,11 @@ export default class extends Controller {
   }
 
   do(event){
-    this.contentTarget.innerText = event.currentTarget.dataset.id;
-    this.nameTarget.innerText = event.currentTarget.dataset.id;
+    fetch(`/experts/${event.currentTarget.dataset.id}`)
+      .then(response => response.text())
+      .then(data => {
+        this.contentTarget.innerHTML = data;
+        // this.nameTarget.innerText = event.currentTarget.dataset.id;
+      });
   }
 }
