@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
   def convoca(sender, procnum)
     @expert = params[:expert]
     @sender = sender
-    @servant = Servant.where(user_id: current_user)[0]
+    @servant = Servant.where(user_id: @sender)[0]
     @proc = procnum
     mail to: @expert.user.email, subject: "Você tem uma nova convocação!"
   end
