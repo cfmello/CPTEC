@@ -1,4 +1,4 @@
-<tr>
+<tr data-controller='field' data-field-target='content'>
   <%= simple_form_for [@expert, @field] do |f| %>
     <th><%= f.input :area, label:false,
       disabled: !current_page?(edit_expert_path(@expert)) %></th>
@@ -7,7 +7,10 @@
     <td><%= f.input :reg_number, label:false,
       disabled: !current_page?(edit_expert_path(@expert)) %></td>
     <td>
-      <%= f.button :button, class: 'btn btn-primary' do %>
+      <%= f.button :button, class: 'btn btn-primary',
+      data: {
+        action: 'click->field#update'
+      } do %>
         <i class="fas fa-plus"></i>
       <% end if current_page?(edit_expert_path(@expert)) %>
     </td>
