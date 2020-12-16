@@ -1,7 +1,8 @@
 <tr>
-  <%= simple_form_for [@expert, @field], remote: true do |f| %>
+  <%= simple_form_for [@expert, @field] do |f| %>
     <th><%= f.input :area, label:false,
-      disabled: !current_page?(edit_expert_path(@expert)) %></th>
+      disabled: !current_page?(edit_expert_path(@expert)),
+      collection: @areas.sort %></th>
     <td><%= f.input :title, label:false,
       disabled: !current_page?(edit_expert_path(@expert)) %></td>
     <td><%= f.input :reg_number, label:false,

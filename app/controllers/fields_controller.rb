@@ -6,10 +6,11 @@ class FieldsController < ApplicationController
     @field.expert = @expert
     if @field.save
       flash[:notice] = "Especialidade adicionada"
+      redirect_to edit_expert_path(@expert, anchor: "field-#{@field.id}")
     else
       flash[:alert] = @field.errors.messages.values.join('<br>')
+      render 'experts/edit'
     end
-    redirect_to edit_expert_path(@expert, anchor: "field-#{@field.id}")
   end
 
   def destroy
