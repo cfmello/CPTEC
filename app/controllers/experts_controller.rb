@@ -1,8 +1,15 @@
+require 'csv'
+
 class ExpertsController < ApplicationController
   before_action :validar_acesso, only: %i[edit update]
   before_action :validar_acesso_index, only: :index
   def edit
     @field = Field.new
+    @areas = []
+    options = { col_sep: ';', headers: :first_row, encoding: Encoding::ISO_8859_1 }
+    CSV.foreach('app/assets/CBO2002 - Ocupacao.csv', options) do |row|
+      @areas << row['TITULO']
+    end
   end
 
   def update
