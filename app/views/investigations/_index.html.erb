@@ -1,8 +1,51 @@
-<% surveys.each do |survey| %>
-  <tr id="survey-<%= survey.id %>">
-    <td><%= survey.proc_number %></td>
-    <td><%= survey.call_date %></td>
-    <td><%= survey.cost %></td>
-  </tr>
-<% end %>
+<div class="container">
+  <h2>Participações</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Número do Processo</th>
+        <th scope="col">Data da Convocação</th>
+        <th scope="col">Valor</th>
+        <th scope="col">
+          <%= ('2'..'3').to_a.include?(current_user.profile) ? 'Status' : '<i class="fas fa-sliders-h">'.html_safe %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% surveys.each do |survey| %>
+        <tr id="survey-<%= survey.id %>">
+          <td><%= survey.proc_number %></td>
+          <td><%= survey.call_date %></td>
+          <td><%= survey.cost.positive? ? survey.cost : 'Em análise' %></td>
+          <td>
+            <% if ('2'..'3').to_a.include?(current_user.profile) || survey.status.downcase != 'pendente' %>
+              <%= survey.status %>
+            <% else %>
+              <%= button_to investigation_path(survey),
+                method: :patch,
+                remote: true,
+                status: 'Aceite',
+                data: {
+                  confirm: 'Confirma aceite?',
+                  },
+                class: 'btn btn-primary' do %>
+                  <i class="far fa-check-square"></i>
+                <% end %>
+              <%= button_to investigation_path(survey),
+                method: :patch,
+                remote: true,
+                status: 'Recusa',
+                data: {
+                  confirm: 'Confirma recusa?',
+                  },
+                class: 'btn btn-danger' do %>
+                  <i class="far fa-times-circle"></i>
+                <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
     

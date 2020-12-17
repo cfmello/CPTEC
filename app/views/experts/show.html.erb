@@ -31,18 +31,4 @@
     <% end %>
   <% end %>
 </div>
-<div class="container">
-  <h2>Participações</h2>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Número do Processo</th>
-        <th scope="col">Data da Convocação</th>
-        <th scope="col">Andamento</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render 'investigations/index', surveys: @expert.investigations %>
-    </tbody>
-  </table>
-</div>
+<%= render 'investigations/index', surveys: @expert.investigations %>
