@@ -68,3 +68,6 @@ gem 'cloudinary', '~> 1.16.0'
 
 # Easy search engine
 gem 'pg_search', '~> 2.3.0'
+
+# Generate seeds
+gem 'faker'

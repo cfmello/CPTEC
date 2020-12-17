@@ -1,7 +1,7 @@
 class Expert < ApplicationRecord
   belongs_to :user
   has_many :fields, dependent: :destroy
-  has_many :investigations
+  has_many :investigations, dependent: :nullify
   has_many_attached :files
 
   validates :accept, presence: true, inclusion: { in: (0..2).to_a }
