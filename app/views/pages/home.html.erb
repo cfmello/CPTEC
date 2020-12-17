@@ -4,7 +4,13 @@
 
 <div class="banner">
     <h1 id="banner-text">Cadastro eletrônico de peritos</h1>
-    <% if !user_signed_in? %>
+    <% if user_signed_in? %>
+      <% if current_user.profile == "1" %>
+        <%= button_to "Convocações", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
+      <% else %>
+        <%= button_to "Pesquisar", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
+      <% end %>
+    <% else %>
       <%= button_to "Acessar", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
     <% end %>
 </div>
