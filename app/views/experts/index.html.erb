@@ -2,7 +2,7 @@
   <h1>Pesquisa</h1>
   <p>Procure um perito utilizando os campos abaixo</p>
   <div data-controller='search' class="my-2">
-    <%= form_tag experts_path, method: :get, remote: true do |f| %>
+    <%= form_tag experts_path, method: :get, autocomplete: 'off' do |f| %>
       <%= text_field_tag :city, '', class: 'form-control my-3',
           data: {
             action: 'keyup->search#dinamic',
