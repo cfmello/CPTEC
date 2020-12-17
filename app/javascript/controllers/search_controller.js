@@ -14,7 +14,9 @@ export default class extends Controller {
   }
 
   dinamic(event){
-    console.log(this.cityTarget.value)
+    fetch(`/experts?city=${this.cityTarget.value}`, { headers: { accept: 'application/json' } })
+      .then(response => response.json())
+      .then(data => console.log(data))
   }
 
   close(event){

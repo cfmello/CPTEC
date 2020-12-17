@@ -32,7 +32,7 @@ class ExpertsController < ApplicationController
       format.html
       format.json do
         render json: {
-          city: @experts.distinct.pluck(:city) if params[:city].present?
+          city: @experts.map{ |exp| exp.city }.uniq
         }
       end
     end
