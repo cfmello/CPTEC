@@ -19,37 +19,9 @@
         class: 'btn btn-primary', value: 'pick',
         data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
   <% end %>
-  <div class="results my-3">
+  <div class="results my-3" data-target='search.results'>
     <% @experts.each do |expert| %>
-      <div class="card card-body">
-        <h5 class="card-tittle">
-          <%= link_to new_expert_investigation_path(expert),
-              class: 'btn btn-secondary',
-              data: { confirm: 'Deseja selecionar este profissional?'} do %>
-                <i class="far fa-handshake"></i>
-              <% end %>
-          <%= link_to expert_path(expert),
-              class: 'btn btn-secondary',
-              data: {
-                toggle: 'modal',
-                target: '#pergamum',
-                action: 'click->search#do',
-                id: expert.id
-              } do %>
-                <i class="fas fa-scroll"></i>
-              <% end %>
-          <%= link_to expert.user.full_name, expert_path(expert) %>
-        </h5>
-        <h6 class="card-subtittle text-muted">
-          <i class="fas fa-map-marker-alt"></i> <%= expert.city %> • <%= expert.fields.count %> Especialidades:
-        </h6>
-        <% fields = params[:practitioner].present? ? expert.fields.pratictioner_search(params[:practitioner]) : expert.fields.each %>
-        <% fields.each do |field| %>
-          <p class="card-text">
-            <%= "#{field.area} - #{field.title} #{field.reg_number}" %>
-          </p>
-        <% end %>
-      </div>
+      <%= render 'card', expert: expert %>
     <% end %>
   </div>
 

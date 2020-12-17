@@ -32,7 +32,8 @@ class ExpertsController < ApplicationController
       format.html
       format.json do
         render json: {
-          city: @experts.map{ |exp| exp.city }.uniq
+          city: @experts.map { |exp| exp.city }.uniq,
+          results: @experts.map { |exp| render_to_string(partial: 'card', locals: { expert: exp }, formats: :html, layout: false) }
         }
       end
     end
