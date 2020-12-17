@@ -12,7 +12,7 @@
 .navbar-lewagon .navbar-brand {
   margin-left: 50px;
   img {
-  width: 250px;
+    width: 250px;
   }
 }
 
@@ -25,7 +25,11 @@
   color: blue;
 }
 .nav-item {
-    margin: 0 20px;
+  margin: 0 20px;
+  i {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 }
 .navbar.custom {
   width: 150%;
