@@ -14,6 +14,6 @@ class Field < ApplicationRecord
 
   def capitalize
     area.capitalize!
-    title.capitalize!
+    title.capitalize! unless title.nil?
   end
 end
