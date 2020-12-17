@@ -1,7 +1,7 @@
 class InvestigationsController < ApplicationController
-  before_action :validar_acesso, except: :index
+  before_action :validar_acesso, except: %i[index update]
   before_action :validar_acesso_update, only: :update
-  before_action :fetch_expert, except: %i[show index]
+  before_action :fetch_expert, only: %i[new create]
   def new
     @investigation = Investigation.new
   end
@@ -31,14 +31,12 @@ class InvestigationsController < ApplicationController
   end
 
   def update
-    raise
     if @investigation.update_attributes(investigation_params_update)
       flash[:success] = "Opção registrada"
-      redirect_to @investigation
     else
       flash[:error] = @investigation.errors.messages.values.join('<br>').html_safe
-      render 'edit'
     end
+    redirect_to investigations_path
   end
 
   private

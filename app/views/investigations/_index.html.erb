@@ -30,24 +30,28 @@
               <%= survey.status %>
             <% else %>
               <%= button_to investigation_path(survey),
-                method: :patch,
+                method: 'patch',
                 remote: true,
-                status: 'Aceite',
+                params: {
+                  'investigation[status]' => 'Aceite',
+                },
                 data: {
                   confirm: 'Confirma aceite?',
                   },
                 class: 'btn btn-primary' do %>
-                  <i class="far fa-check-square"></i>
+                  <i class="far fa-check-circle"></i> Aceitar
                 <% end %>
               <%= button_to investigation_path(survey),
-                method: :patch,
+                method: 'patch',
                 remote: true,
-                status: 'Recusa',
+                params: {
+                  'investigation[status]' => 'Recusa',
+                },
                 data: {
                   confirm: 'Confirma recusa?',
                   },
                 class: 'btn btn-danger' do %>
-                  <i class="far fa-times-circle"></i>
+                  <i class="far fa-times-circle"></i> Recusar
                 <% end %>
             <% end %>
           </td>

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :investigations, only: %i[new create]
   end
   resources :fields, only: :destroy
-  resources :investigations, only: %i[show index update]
+  resources :investigations, only: %i[update show index]
 end
