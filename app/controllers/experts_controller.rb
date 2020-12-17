@@ -28,6 +28,14 @@ class ExpertsController < ApplicationController
     @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
     @experts = Expert.last(10) unless params[:city].present? || params[:practitioner].present?
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          city: @experts.distinct.pluck(:city) if params[:city].present?
+        }
+      end
+    end
     pick if params[:button] == 'pick'
   end
 

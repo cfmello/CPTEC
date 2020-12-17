@@ -1,20 +1,24 @@
 <h1>Pesquisa</h1>
 <p>Procure um perito utilizando os campos abaixo</p>
-<%= form_tag experts_path, method: :get do |f| %>
-  <%= text_field_tag :city, params[:city], class: 'form-control',
-      placeholder: 'Cidade' %>
-  <%= select_tag :practitioner, options_for_select(@pratictioners.map{|item| [item,item]}),
-      class: 'form-control',
-      placeholder: 'Area ou Especialidade' %>
-  <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
-      class: 'btn btn-primary', value: 'search' %>
-  <%= link_to '<i class="fas fa-times"></i> Limpar'.html_safe, experts_path,
-      class: 'btn btn-primary' %>
-  <%= button_tag '<i class="fas fa-braille"></i> Sortear'.html_safe,
-      class: 'btn btn-primary', value: 'pick',
-      data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
-<% end %>
 <div data-controller='search'>
+  <%= form_tag experts_path, method: :get do |f| %>
+    <%= text_field_tag :city, params[:city], class: 'form-control',
+        data: {
+          action: 'keyup->search#dinamic blur->search#close',
+          target: 'search.city'
+        },
+        placeholder: 'Cidade' %>
+    <%= select_tag :practitioner, options_for_select(@pratictioners.map{|item| [item,item]}),
+        class: 'form-control',
+        placeholder: 'Area ou Especialidade' %>
+    <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
+        class: 'btn btn-primary', value: 'search' %>
+    <%= link_to '<i class="fas fa-times"></i> Limpar'.html_safe, experts_path,
+        class: 'btn btn-primary' %>
+    <%= button_tag '<i class="fas fa-braille"></i> Sortear'.html_safe,
+        class: 'btn btn-primary', value: 'pick',
+        data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
+  <% end %>
   <div class="results my-3">
     <% @experts.each do |expert| %>
       <div class="card card-body">
