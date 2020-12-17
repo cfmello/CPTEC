@@ -75,14 +75,29 @@ body {
     background-size: cover;
 }
 
+#banner-button {
+  display: block;
+  width: 15%;
+  color: white;
+  background-color: rgb(85, 197, 85);
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left:80%;
+  margin-top:8%;
+  position: relative;
+}
+
 #banner-text {
   color: white;
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 60px;
-  text-align: left;
-  padding-top: 50px;
+  font-size: 56px;
+  text-align: center;
+  margin-right:48%;
+  margin-top:4%;
+  position:absolute;
 }
 
 #baixo {
