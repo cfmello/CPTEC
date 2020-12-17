@@ -26,13 +26,13 @@ class ExpertsController < ApplicationController
     @experts = Expert.where(active: true)
     @experts = @experts.city_search(params[:city]) if params[:city].present?
     @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
-    @experts = Expert.last(10) unless params[:city].present? || params[:practitioner].present?
+    @experts = [] unless params[:city].present? || params[:practitioner].present?
     @pratictioners = Field.distinct.pluck(:area) + Field.distinct.pluck(:title)
     respond_to do |format|
       format.html
       format.json do
         render json: {
-          city: @experts.map { |exp| exp.city }.uniq,
+          cities: @experts.map { |exp| "<p data-action='click->search#fillCity'>#{exp.city}</p>" }.uniq,
           results: @experts.map { |exp| render_to_string(partial: 'card', locals: { expert: exp }, formats: :html, layout: false) }
         }
       end

@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'content', 'city' ];
+  static targets = [ 'content', 'city', 'results', 'options' ];
   connect() {
   }
 
@@ -16,10 +16,19 @@ export default class extends Controller {
   dinamic(event){
     fetch(`/experts?city=${this.cityTarget.value}`, { headers: { accept: 'application/json' } })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.resultsTarget.innerHTML = data.results.join('');
+        this.optionsTarget.innerHTML = data.cities.join('');
+        this.optionsTarget.removeAttribute('hidden');
+      })
   }
 
   close(event){
-    console.log('closing')
+  }
+  
+  fillCity(event){
+    this.cityTarget.value = event.currentTarget.innerText;
+    this.optionsTarget.setAttribute('hidden',true);
+    this.optionsTarget.focus();
   }
 }

@@ -19,6 +19,8 @@
         class: 'btn btn-primary', value: 'pick',
         data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
   <% end %>
+  <div class="container" hidden data-search-target='options'>
+  </div>
   <div class="results my-3" data-target='search.results'>
     <% @experts.each do |expert| %>
       <%= render 'card', expert: expert %>
