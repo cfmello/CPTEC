@@ -66,11 +66,40 @@ body {
 .banner{
     width: 100vw;
     height: 40vh;
-    border: 1px solid red;
     left: 0;
     position: fixed;
     background-color: whitesmoke;
-    // transform: translateX(100%);
+    background-image: url("banner.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#banner-button {
+  display: block;
+  width: 16%;
+  height: 50px;
+  color: white;
+  background-color: rgb(85, 197, 85);
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left:80%;
+  margin-top:8%;
+  position: relative;
+  border:none
+}
+
+#banner-text {
+  color: white;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 56px;
+  text-align: justify;
+  margin-left:4%;
+  margin-right:44%;
+  margin-top:4%;
+  position:absolute;
 }
 
 #baixo {
