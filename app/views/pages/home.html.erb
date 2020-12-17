@@ -1,31 +1,27 @@
-<title>CPTEC - Cadastro Eletrônico de Peritos e Órgãos Técnicos</title>
+<div class="d-flex flex-column">
 
-<div class="d-flex flex-direction-column">
-
-<div class="banner">
-    <h1 id="banner-text">Cadastro eletrônico de peritos</h1>
-    <% if user_signed_in? %>
-      <% if current_user.profile == "1" %>
-        <%= button_to "Convocações", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
+  <div class="banner d-flex justify-content-center align-items-center flex-column">
+      <h1 id="banner-text">Cadastro eletrônico de peritos</h1>
+      <% if user_signed_in? %>
+        <% if current_user.profile == "1" %>
+          <%= button_to "Convocações", "#", class: "btn", id: "banner-button" %>
+        <% else %>
+          <%= button_to "Pesquisar", experts_path, class: "btn btn-success", id: "banner-button" %>
+        <% end %>
       <% else %>
-        <%= button_to "Pesquisar", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
+        <%= button_to "Acessar", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
       <% end %>
-    <% else %>
-      <%= button_to "Acessar", new_user_session_path, class: "btn btn-success", id: "banner-button" %>
-    <% end %>
-</div>
+  </div>
 
-<br><br><br><br><br>
-
-<div id="baixo" class="container">
-  <div class="row">
-    <div class="col-6 card">
-      <p>card1</p>
-    </div>
-    <div class="col-6 card">
-      <p>card2</p>
+  <div id="baixo" class="container">
+    <div class="row">
+      <div class="col-6 card">
+        <p>card1</p>
+      </div>
+      <div class="col-6 card">
+        <p>card2</p>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
