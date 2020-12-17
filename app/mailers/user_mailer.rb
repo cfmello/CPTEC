@@ -18,8 +18,12 @@ class UserMailer < ApplicationMailer
   end
 
   def aceita
+    @investigation = params[:investigation]
+    mail to: @investigation.servant.user.email, subject: "Convocação aceita!"
   end
 
   def recusa
+    @investigation = params[:investigation]
+    mail to: @investigation.servant.user.email, subject: "Convocação recusada!"
   end
 end
