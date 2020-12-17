@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_203612) do
+ActiveRecord::Schema.define(version: 2020_12_17_132927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,13 +62,13 @@ ActiveRecord::Schema.define(version: 2020_12_16_203612) do
 
   create_table "investigations", force: :cascade do |t|
     t.string "proc_number"
-    t.float "cost"
+    t.float "cost", default: 0.0, null: false
     t.date "call_date"
     t.bigint "expert_id", null: false
     t.bigint "servant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
+    t.string "status", default: "Pendente", null: false
     t.index ["expert_id"], name: "index_investigations_on_expert_id"
     t.index ["servant_id"], name: "index_investigations_on_servant_id"
   end

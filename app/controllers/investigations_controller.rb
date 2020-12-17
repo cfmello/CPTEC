@@ -1,6 +1,7 @@
 class InvestigationsController < ApplicationController
-  before_action :validar_acesso
-  before_action :fetch_expert, except: :show
+  before_action :validar_acesso, except: %i[index update]
+  before_action :validar_acesso_update, only: :update
+  before_action :fetch_expert, only: %i[new create]
   def new
     @investigation = Investigation.new
   end
@@ -25,18 +26,42 @@ class InvestigationsController < ApplicationController
     @investigation = Investigation.find(params[:id])
   end
 
+  def index
+    @investigations = ('2'..'3').to_a.include?(current_user.profile) ? Investigation.all : Investigation.where(expert: current_user.expert)
+  end
+
+  def update
+    if @investigation.update_attributes(investigation_params_update)
+      flash[:success] = "Opção registrada"
+    else
+      flash[:error] = @investigation.errors.messages.values.join('<br>').html_safe
+    end
+    redirect_to investigations_path
+  end
+
   private
 
   def investigation_params
     params.require(:investigation).permit(:proc_number, :call_date)
   end
 
+  def investigation_params_update
+    params.require(:investigation).permit(:status)
+  end
+
+  def redirect_unauthorized
+    flash[:alert] = 'Não autorizado'
+    redirect_to root_path
+  end
+
   def validar_acesso
     @servant = Servant.find_by(user_id: current_user.id)
-    unless ('2'..'3').to_a.include?(current_user.profile)
-      flash[:alert] = 'Não autorizado'
-      redirect_to root_path
-    end
+    redirect_unauthorized unless ('2'..'3').to_a.include?(current_user.profile)
+  end
+
+  def validar_acesso_update
+    @investigation = Investigation.find(params[:id])
+    redirect_unauthorized unless current_user.profile == '1' && current_user.expert == @investigation.expert
   end
 
   def fetch_expert

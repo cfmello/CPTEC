@@ -1,8 +1,63 @@
-<% surveys.each do |survey| %>
-  <tr id="survey-<%= survey.id %>">
-    <td><%= survey.proc_number %></td>
-    <td><%= survey.call_date %></td>
-    <td><%= survey.cost %></td>
-  </tr>
-<% end %>
+<div class="container overflow-auto">
+  <h2>Participações</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <% if ('2'..'3').to_a.include?(current_user.profile) %>
+          <th scope="col">Especialista</th>
+          <th scope="col">Servidor/Magistrado</th>
+        <% end %>
+        <th scope="col">Número do Processo</th>
+        <th scope="col">Data da Convocação</th>
+        <th scope="col">Valor</th>
+        <th scope="col">
+          <%= ('2'..'3').to_a.include?(current_user.profile) ? 'Status' : '<i class="fas fa-sliders-h">'.html_safe %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% surveys.each do |survey| %>
+        <tr id="survey-<%= survey.id %>">
+          <% if ('2'..'3').to_a.include?(current_user.profile) %>
+            <th scope="col"><%= survey.expert.user.full_name %></th>
+            <th scope="col"><%= survey.servant.user.full_name %></th>
+          <% end %>
+          <td><%= survey.proc_number %></td>
+          <td><%= survey.call_date.strftime('%-d/%-m/%Y') %></td>
+          <td><%= survey.cost.nil? || survey.cost.positive? ? survey.cost : 'Em análise' %></td>
+          <td>
+            <% if ('2'..'3').to_a.include?(current_user.profile) || survey.status.downcase != 'pendente' %>
+              <%= survey.status %>
+            <% else %>
+              <%= button_to investigation_path(survey),
+                method: 'patch',
+                remote: true,
+                params: {
+                  'investigation[status]' => 'Aceite',
+                },
+                data: {
+                  confirm: 'Confirma aceite?',
+                  },
+                class: 'btn btn-primary' do %>
+                  <i class="far fa-check-circle"></i> Aceitar
+                <% end %>
+              <%= button_to investigation_path(survey),
+                method: 'patch',
+                remote: true,
+                params: {
+                  'investigation[status]' => 'Recusa',
+                },
+                data: {
+                  confirm: 'Confirma recusa?',
+                  },
+                class: 'btn btn-danger' do %>
+                  <i class="far fa-times-circle"></i> Recusar
+                <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
     
