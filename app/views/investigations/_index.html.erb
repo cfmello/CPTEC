@@ -3,6 +3,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <% if ('2'..'3').to_a.include?(current_user.profile) %>
+          <th scope="col">Especialista</th>
+          <th scope="col">Servidor/Magistrado</th>
+        <% end %>
         <th scope="col">Número do Processo</th>
         <th scope="col">Data da Convocação</th>
         <th scope="col">Valor</th>
@@ -14,9 +18,13 @@
     <tbody>
       <% surveys.each do |survey| %>
         <tr id="survey-<%= survey.id %>">
+          <% if ('2'..'3').to_a.include?(current_user.profile) %>
+            <th scope="col"><%= survey.expert.user.full_name %></th>
+            <th scope="col"><%= survey.servant.user.full_name %></th>
+          <% end %>
           <td><%= survey.proc_number %></td>
-          <td><%= survey.call_date %></td>
-          <td><%= survey.cost.positive? ? survey.cost : 'Em análise' %></td>
+          <td><%= survey.call_date.strftime('%-d/%-m/%Y') %></td>
+          <td><%= survey.cost.nil? || survey.cost.positive? ? survey.cost : 'Em análise' %></td>
           <td>
             <% if ('2'..'3').to_a.include?(current_user.profile) || survey.status.downcase != 'pendente' %>
               <%= survey.status %>
