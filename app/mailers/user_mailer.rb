@@ -16,4 +16,10 @@ class UserMailer < ApplicationMailer
     @proc = procnum
     mail to: @expert.user.email, subject: "Você tem uma nova convocação!"
   end
+
+  def aceita
+  end
+
+  def recusa
+  end
 end
