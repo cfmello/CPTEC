@@ -1,5 +1,7 @@
 <h1 style="background-color:red;color:white;font-weight:bolder;">RESPOSTA- Cadastro Eletrônico de Peritos!/h1>
-<p>Prezado <%= @sender.full_name %>\<%= @servant.court %>, informo que declino da convocação por mim remetida via CPTEC.</p>
-<p>O recusa se deve à indisponibilidade de prestar o referido serviço.</p>
+<p>Prezado <%= @investigation.servant.user.full_name %>\<%= @investigation.servant.court %>, declino da indicação feita 
+via sistema, uma vez que estou indisponível para atender à convocação enviada e atuar como perito no processo número <%= @proc %>.</p>
 <br><br>
-<p>Para aceitar, acesse o CPTEC em <a href="https://cptec.herokuapp.com/" target="_blank">https://cptec.herokuapp.com/</a>.</p>
+<p>Acesse o CPTEC em <a href="https://cptec.herokuapp.com/" target="_blank">https://cptec.herokuapp.com/</a>.</p>
+<br><br><br>
+<p style="color:red">Mensagem gerada automaticamente. Não responda!</p>
