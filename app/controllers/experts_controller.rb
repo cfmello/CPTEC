@@ -33,6 +33,12 @@ class ExpertsController < ApplicationController
       format.json do
         render json: {
           cities: @experts.map { |exp| "<p data-action='click->search#fillCity'>#{exp.city}</p>" }.uniq,
+          pratictioners: @experts.map do |exp|
+            exp.fields.map do |fld|
+              ["<p data-action='click->search#fillCity'>#{fld.area}</p>",
+               "<p data-action='click->search#fillCity'>#{fld.title}</p>"]
+            end
+          end.flatten.uniq,
           results: @experts.map { |exp| render_to_string(partial: 'card', locals: { expert: exp }, formats: :html, layout: false) }
         }
       end

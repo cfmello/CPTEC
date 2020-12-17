@@ -1,45 +1,48 @@
-<h1>Pesquisa</h1>
-<p>Procure um perito utilizando os campos abaixo</p>
-<div data-controller='search'>
-  <%= form_tag experts_path, method: :get do |f| %>
-    <%= text_field_tag :city, params[:city], class: 'form-control',
-        data: {
-          action: 'keyup->search#dinamic blur->search#close',
-          target: 'search.city'
-        },
-        placeholder: 'Cidade' %>
-    <%= select_tag :practitioner, options_for_select(@pratictioners.map{|item| [item,item]}),
-        class: 'form-control',
-        placeholder: 'Area ou Especialidade' %>
-    <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
-        class: 'btn btn-primary', value: 'search' %>
-    <%= link_to '<i class="fas fa-times"></i> Limpar'.html_safe, experts_path,
-        class: 'btn btn-primary' %>
-    <%= button_tag '<i class="fas fa-braille"></i> Sortear'.html_safe,
-        class: 'btn btn-primary', value: 'pick',
-        data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
-  <% end %>
-  <div class="container" hidden data-search-target='options'>
-  </div>
-  <div class="results my-3" data-target='search.results'>
-    <% @experts.each do |expert| %>
-      <%= render 'card', expert: expert %>
+<main class="my-3">
+  <h1>Pesquisa</h1>
+  <p>Procure um perito utilizando os campos abaixo</p>
+  <div data-controller='search' class="my-2">
+    <%= form_tag experts_path, method: :get, remote: true do |f| %>
+      <%= text_field_tag :city, '', class: 'form-control my-3',
+          data: {
+            action: 'keyup->search#dinamic',
+            target: 'search.city'
+          },
+          placeholder: 'Cidade' %>
+      <%= text_field_tag :practitioner, '', class: 'form-control my-3',
+          data: {
+            action: 'keyup->search#dinamic',
+            target: 'search.practitioner'
+          },
+          placeholder: 'Area ou Especialidade' %>
+      <%= button_tag '<i class="fas fa-search"></i> Buscar'.html_safe,
+          class: 'btn btn-primary', value: 'search' %>
+      <%= link_to '<i class="fas fa-times"></i> Limpar'.html_safe, experts_path,
+          class: 'btn btn-primary' %>
+      <%= button_tag '<i class="fas fa-braille"></i> Sortear'.html_safe,
+          class: 'btn btn-primary', value: 'pick',
+          data: { confirm: 'O sistema selecionará aleatoriamente um dos auxiliares abaixos. Deseja prosseguir?' } %>
     <% end %>
-  </div>
+    <div class="results my-3" data-target='search.results'>
+      <% @experts.each do |expert| %>
+        <%= render 'card', expert: expert %>
+      <% end %>
+    </div>
 
-  <div class="modal fade" id="pergamum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Dados Cadastrais</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" data-search-target="content">
-          ...
+    <div class="modal fade" id="pergamum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Dados Cadastrais</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" data-search-target="content">
+            ...
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
