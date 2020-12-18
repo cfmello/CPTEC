@@ -9,12 +9,12 @@
         <th scope="col">Área</th>
         <th scope="col">Especialidade</th>
         <th scope="col">Registro Conselho</th>
-        <th scope="col"><i class="fas fa-sliders-h"></i></th>
+        <th scope="col"><i class="fas fa-sliders-h"></i><i class="fas fa-sliders-h"></i></th>
       </tr>
     </thead>
     <tbody>
       <%= render 'fields/form' %>
-      <%= render 'fields/index', fields: @expert.fields %>
+      <%= render 'fields/index', fields: @expert.fields.sort_by { |field| field.area } %>
     </tbody>
   </table>
 </div>
