@@ -23,7 +23,8 @@ class ExpertsController < ApplicationController
   end
 
   def index
-    @experts = Expert.where(active: true, accept: [params[:accept], 2])
+    @experts = Expert.where(active: true)
+    @experts = @experts.where(accept: [params[:accept], 2]) if params[:accept] != 2
     @experts = @experts.city_search(params[:city]) if params[:city].present?
     @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
     @experts = [] unless params[:city].present? || params[:practitioner].present?
