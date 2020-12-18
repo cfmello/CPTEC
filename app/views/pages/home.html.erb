@@ -6,7 +6,8 @@
         <% if current_user.profile == "1" %>
           <%= link_to "Convocações", "#", class: "btn btn-primary mt-5", id: "banner-button" %>
         <% else %>
-          <%= link_to "Pesquisar", experts_path, class: "btn btn-primary mt-5", id: "banner-button" %>
+          <%= link_to '<i class="fas fa-search"></i> Pesquisar'.html_safe, experts_path,
+          class: 'btn btn-primary mt-5'%>
         <% end %>
       <% else %>
         <%= link_to "Acessar", new_user_session_path, class: "btn btn-primary mt-5", id: "banner-button" %>
