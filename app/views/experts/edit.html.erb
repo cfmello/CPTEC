@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <%= render 'fields/form' %>
-      <%= render 'fields/index', fields: @expert.fields %>
+      <%= render 'fields/index', fields: @expert.fields.sort_by { |field| field.area } %>
     </tbody>
   </table>
 </div>
