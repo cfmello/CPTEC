@@ -65,7 +65,7 @@ body {
 
 .banner{
     width: 100vw;
-    height: 40vh;
+    height: 60vh;
     left: 0;
     position: fixed;
     background-color: whitesmoke;
@@ -82,20 +82,13 @@ body {
   font-size: 52px;
 }
 
-#baixo {
-  position: relative;
-  border: 1px solid blue;
-  top: 47vh;
-  height: 30vh;
-}
-
-#baixo .card {
-  border: 3px solid green;
-}
-
-#baixo p {
-  margin: auto;
-  text-align: center;
+#banner-button {
+  background-color: #62cb64;
+  color: white;
+  border-radius: 50px;
+  height: 50px;
+  width: 230px;
+  font-size: 22px;
 }
 
 footer {
@@ -109,3 +102,5 @@ footer {
   justify-content: center;
   color: white;
 }
+
+
