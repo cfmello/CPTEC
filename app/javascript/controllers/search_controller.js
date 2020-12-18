@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'content', 'city', 'results', 'practitioner' ];
+  static targets = [ 'content', 'city', 'results', 'practitioner', 'accept' ];
   connect() {
   }
 
@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   dinamic(event){
-    fetch(`/experts?city=${this.cityTarget.value}&practitioner=${this.practitionerTarget.value}`,
+    fetch(`/experts?city=${this.cityTarget.value}&practitioner=${this.practitionerTarget.value}&accept=${this.acceptTarget.value}`,
           { headers: { accept: 'application/json' } })
       .then(response => response.json())
       .then(data => {

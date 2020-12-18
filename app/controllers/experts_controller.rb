@@ -24,6 +24,7 @@ class ExpertsController < ApplicationController
 
   def index
     @experts = Expert.where(active: true)
+    @experts = @experts.where(accept: [params[:accept], 2]) if params[:accept] != 2
     @experts = @experts.city_search(params[:city]) if params[:city].present?
     @experts = @experts.pratictioner_search(params[:practitioner]) if params[:practitioner].present?
     @experts = [] unless params[:city].present? || params[:practitioner].present?
@@ -31,16 +32,7 @@ class ExpertsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: {
-          cities: @experts.map { |exp| "<p data-action='click->search#fillCity'>#{exp.city}</p>" }.uniq,
-          pratictioners: @experts.map do |exp|
-            exp.fields.map do |fld|
-              ["<p data-action='click->search#fillCity'>#{fld.area}</p>",
-               "<p data-action='click->search#fillCity'>#{fld.title}</p>"]
-            end
-          end.flatten.uniq,
-          results: @experts.map { |exp| render_to_string(partial: 'card', locals: { expert: exp }, formats: :html, layout: false) }
-        }
+        render json: fetch_data
       end
     end
     pick if params[:button] == 'pick'
@@ -89,5 +81,18 @@ class ExpertsController < ApplicationController
       flash[:alert] = 'Não autorizado'
       redirect_to root_path
     end
+  end
+
+  def fetch_data
+    {
+      cities: @experts.map { |exp| "<p data-action='click->search#fillCity'>#{exp.city}</p>" }.uniq,
+      pratictioners: @experts.map do |exp|
+        exp.fields.map do |fld|
+          ["<p data-action='click->search#fillCity'>#{fld.area}</p>",
+            "<p data-action='click->search#fillCity'>#{fld.title}</p>"]
+        end
+      end.flatten.uniq,
+      results: @experts.map { |exp| render_to_string(partial: 'card', locals: { expert: exp }, formats: :html, layout: false) }
+    }
   end
 end

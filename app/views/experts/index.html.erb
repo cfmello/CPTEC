@@ -15,6 +15,13 @@
             target: 'search.practitioner'
           },
           placeholder: 'Area ou Especialidade' %>
+      <%= select_tag :accept,
+          options_for_select([['Justiça Gratuita', 0], ['Perícia Particular', 1], ['Ambos', 2]], 2),
+          class: 'form-control my-3',
+          data: {
+            action: 'change->search#dinamic',
+            target: 'search.accept'
+          } %>
       <%= button_tag '<i class="fas fa-search"></i> Pesquisar'.html_safe,
           class: 'btn btn-primary', value: 'search' %>
       <%= link_to '<i class="fas fa-times"></i> Limpar'.html_safe, experts_path,
